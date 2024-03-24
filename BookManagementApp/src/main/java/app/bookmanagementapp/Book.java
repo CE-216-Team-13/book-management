@@ -1,8 +1,74 @@
 package app.bookmanagementapp;
 
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import org.json.*;
 
 public class Book {
+    public Book(JSONObject object) {
+        Iterator<String> keys = object.keys();
+        while (keys.hasNext()) {
+            String key = keys.next();
+            if (key.trim().equalsIgnoreCase("title")) {
+                this.title = object.getString(key);
+                //     System.out.println(title);
+            } else if (key.trim().equalsIgnoreCase("subtitle")) {
+                this.subtitle = object.getString(key);
+                //     System.out.println(subtitle);
+            } else if (key.trim().equalsIgnoreCase("isbn")) {
+                this.isbn = object.getString(key);
+                //    System.out.println(isbn);
+            } else if (key.trim().equalsIgnoreCase("publisher")) {
+                this.publisher = object.getString(key);
+                //    System.out.println(publisher);
+            } else if (key.trim().equalsIgnoreCase("date")) {
+                this.date = object.getString(key);
+                //   System.out.println(date);
+            } else if (key.trim().equalsIgnoreCase("cover")) {
+                this.cover = object.getString(key);
+                //    System.out.println(cover);
+            } else if (key.trim().equalsIgnoreCase("language")) {
+                this.language = object.getString(key);
+                //    System.out.println(language);
+            } else if (key.trim().equalsIgnoreCase("image")) {
+                this.image = object.getString(key);
+                //    System.out.println(image);
+            } else if (key.trim().equalsIgnoreCase("authors")) {
+                ArrayList<String> authors = new ArrayList<>();
+                JSONArray authorsJson = object.getJSONArray("authors");
+                for (Object s : authorsJson) {
+                    authors.add(s.toString());
+                    //     System.out.println(s.toString());
+                }
+                this.authors = authors;
+            } else if (key.trim().equalsIgnoreCase("translators")) {
+                ArrayList<String> translators = new ArrayList<>();
+                JSONArray translatorsJson = object.getJSONArray("translators");
+                for (Object s : translatorsJson) {
+                    translators.add(s.toString());
+                    //     System.out.println(s.toString());
+                }
+                this.translators = translators;
+            } else if (key.trim().equalsIgnoreCase("tags")) {
+                ArrayList<String> tags = new ArrayList<>();
+                JSONArray tagsJson = object.getJSONArray("tags");
+                for (Object s : tagsJson) {
+                    tags.add(s.toString());
+                    //   System.out.println(s.toString());
+                }
+                this.tags = tags;
+            } else if (key.trim().equalsIgnoreCase("rating")) {
+                this.rating = Float.parseFloat(object.get(key).toString());
+                //   System.out.println(rating);
+            } else if (key.trim().equalsIgnoreCase("edition")) {
+                this.edition = Integer.parseInt(object.get(key).toString());
+                //  System.out.println(edition);
+            }
+        }
+    }
+
     private String title, subtitle, isbn, publisher, date, cover, language, image;
     private int edition;
     private float rating;
@@ -110,6 +176,19 @@ public class Book {
 
     public void setTags(ArrayList<String> tags) {
         this.tags = tags;
+    }
+
+    public static void main(String args[]) {
+        try {
+
+            System.out.println(System.getProperty("user.dir"));
+            FileReader reader = new FileReader("BookManagementApp\\books\\test.json");
+            JSONObject j = new JSONObject((new JSONTokener(reader)));
+            Book b = new Book(j);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
 

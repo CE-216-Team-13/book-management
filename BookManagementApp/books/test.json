@@ -1,0 +1,24 @@
+{
+  "title": "Art of War",
+  "subtitle": "",
+  "authors": [
+    "Ali veli",
+    "John doe"
+  ],
+  "translators": [
+    "Kerem çevirmen",
+    "Mete translate"
+  ],
+  "isbn": "2345-1241-123",
+  "publisher": "İş Bankası",
+  "date": "2022-02-12",
+  "edition": 4,
+  "cover": "",
+  "language": "English",
+  "ratings": 4.5,
+  "tags": [
+    "history",
+    "english",
+    "asia"
+  ]
+}

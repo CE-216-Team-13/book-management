@@ -4,7 +4,7 @@ module app.bookmanagementapp {
 
     requires org.controlsfx.controls;
     requires org.kordamp.ikonli.javafx;
-
+    requires org.json;
     opens app.bookmanagementapp to javafx.fxml;
     exports app.bookmanagementapp;
 }
