@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7245de6b-a8f3-4ba0-abd0-4aad1a2cd8b2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/Book.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/libs/BookManagementApp-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/libs/BookManagementApp-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/java/module-info.java" afterDir="false" />
-    </list>
+    <list default="true" id="7245de6b-a8f3-4ba0-abd0-4aad1a2cd8b2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
