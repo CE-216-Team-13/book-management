@@ -63,14 +63,13 @@ public class Book {
                 this.rating = Float.parseFloat(object.get(key).toString());
                 //   System.out.println(rating);
             } else if (key.trim().equalsIgnoreCase("edition")) {
-                this.edition = Integer.parseInt(object.get(key).toString());
+                this.edition = object.get(key).toString();
                 //  System.out.println(edition);
             }
         }
     }
 
-    private String title, subtitle, isbn, publisher, date, cover, language, image;
-    private int edition;
+    private String title, subtitle, isbn, publisher, date, cover, language, image, edition;
     private float rating;
     private ArrayList<String> authors, translators, tags;
 
@@ -138,11 +137,11 @@ public class Book {
         this.image = image;
     }
 
-    public int getEdition() {
+    public String getEdition() {
         return edition;
     }
 
-    public void setEdition(int edition) {
+    public void setEdition(String edition) {
         this.edition = edition;
     }
 
@@ -150,7 +149,7 @@ public class Book {
         return rating;
     }
 
-    public void setReting(float rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 
