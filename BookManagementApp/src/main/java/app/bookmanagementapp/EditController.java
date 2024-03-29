@@ -12,6 +12,8 @@ import org.json.JSONWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class EditController implements Initializable {
@@ -42,6 +44,39 @@ public class EditController implements Initializable {
         hardCover.setToggleGroup(toggleGroup);
         paperback.setToggleGroup(toggleGroup);
         hardCover.setSelected(true);
+
+        /*      BELOW CODE IS NOT READY TO USE, DO NOT UNCOMMENT.
+        title.setText(book.getTitle());
+        subtitle.setText(book.getSubtitle());
+        isbn.setText(book.getIsbn());
+        rating.setText(Float.toString(book.getRating()));
+        for (String author: book.getAuthors()) {
+            authorsList.getItems().add(author);
+        }
+        for (String translator: book.getTranslators()) {
+            translatorsList.getItems().add(translator);
+        }
+        for (String tag: book.getTags()) {
+            tagsList.getItems().add(tag);
+        }
+        publisher.setText(book.getPublisher());
+        edition.setText(book.getEdition());
+        language.setText(book.getLanguage());
+        try {
+            String currDate = book.getDate();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate localDate = LocalDate.parse(currDate, formatter);
+            datePicker.setValue(localDate);
+        }
+        catch (Exception e) {
+            System.out.println("Error getting the date.");
+        }
+        if (book.getCover().equalsIgnoreCase("paperback")) {
+            hardCover.setSelected(false);
+            paperback.setSelected(true);
+        }*/
+
+
     }
 
     @FXML
