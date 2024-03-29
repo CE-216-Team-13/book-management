@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7245de6b-a8f3-4ba0-abd0-4aad1a2cd8b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/DeleteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/EditController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/.gradle/8.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/.gradle/8.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
@@ -15,15 +13,23 @@
       <change beforePath="$PROJECT_DIR$/BookManagementApp/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/.gradle/8.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/.gradle/8.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/books/test.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/Book.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/DeleteController.class" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/DeleteController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/HelloController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/build/libs/BookManagementApp-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/libs/BookManagementApp-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/build/resources/main/app/bookmanagementapp/Delete_Window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/resources/main/app/bookmanagementapp/Delete_Window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/tmp/compileJava/compileTransaction/stash-dir/Main.class.uniqueId0" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/tmp/compileJava/compileTransaction/stash-dir/Main.class.uniqueId0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/resources/main/app/bookmanagementapp/hello-view.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/DeleteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/DeleteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/HelloController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/resources/app/bookmanagementapp/Delete_Window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/resources/app/bookmanagementapp/Delete_Window.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/resources/app/bookmanagementapp/Edit_Window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/resources/app/bookmanagementapp/Edit_Window.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/resources/app/bookmanagementapp/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +92,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.28964943",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -94,7 +100,20 @@
       <recent name="C:\Users\kbkc7\Documents\GitHub\book-management\BookManagementApp\src\main\resources\app\bookmanagementapp" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="app.bookmanagementapp.Main" />
+      <module name="BookManagementApp.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.bookmanagementapp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BookManagementApp [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -118,6 +137,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Gradle.BookManagementApp [dependencies]" />
       </list>
     </recent_temporary>
@@ -132,5 +152,9 @@
       <updated>1711274228759</updated>
     </task>
     <servers />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

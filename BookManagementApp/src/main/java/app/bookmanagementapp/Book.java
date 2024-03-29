@@ -68,6 +68,9 @@ public class Book {
             }
         }
     }
+    public Book() {
+
+    }
 
     private String title, subtitle, isbn, publisher, date, cover, language, image, edition;
     private float rating;
