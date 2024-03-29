@@ -51,7 +51,7 @@ public class addBookScreen extends Application {
     Label Lrating = new Label("Rating");
     Label Ltags = new Label("Tags");
 
-    private Book book = new Book();
+    private Book book = new Book(new JSONObject());
 
     @Override
     public void start(Stage stage) throws IOException {
