@@ -103,44 +103,106 @@ public class EditController implements Initializable {
 
     @FXML
     protected void onSaveButtonClick() {
-        try {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("title", title.getText());
-            jsonObject.put("subtitle", subtitle.getText());
-            jsonObject.put("authors", authorsList.getItems());
-            jsonObject.put("translators", translatorsList.getItems());
-            jsonObject.put("isbn", isbn.getText());
-            jsonObject.put("publisher", publisher.getText());
-            jsonObject.put("date", datePicker.getValue().toString());
-            jsonObject.put("edition", Integer.parseInt(edition.getText()));//TO-DO: Handle the empty state
-            jsonObject.put("cover", ((RadioButton) toggleGroup.getSelectedToggle()).getText());
-            jsonObject.put("language", language.getText());
-            jsonObject.put("rating", Float.parseFloat(rating.getText())); //TO-DO: Handle the empty state
-            jsonObject.put("tags", tagsList.getItems());
-            book = new Book(jsonObject);
-            System.out.println(book.getTitle());
-            System.out.println(book.getSubtitle());
-            System.out.println(book.getAuthors());
-            System.out.println(book.getTranslators());
-            System.out.println(book.getIsbn());
-            System.out.println(book.getPublisher());
-            System.out.println(book.getDate());
-            System.out.println(book.getEdition());
-            System.out.println(book.getCover());
-            System.out.println(book.getLanguage());
-            System.out.println(book.getRating());
-            System.out.println(book.getTags());
-            FileWriter writer = new FileWriter("BookManagementApp\\books\\test.json");writer.write(jsonObject.toString(4));
-            writer.flush();
+        if (isValidTitle() && isValidAuthors() && isValidEdition() && isValidDate() && isValidRating()) {
+            try {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("title", title.getText());
+                jsonObject.put("subtitle", subtitle.getText());
+                jsonObject.put("authors", authorsList.getItems());
+                jsonObject.put("translators", translatorsList.getItems());
+                jsonObject.put("isbn", isbn.getText());
+                jsonObject.put("publisher", publisher.getText());
+                jsonObject.put("date", datePicker.getValue().toString());
+                jsonObject.put("edition", Integer.parseInt(edition.getText()));
+                jsonObject.put("cover", ((RadioButton) toggleGroup.getSelectedToggle()).getText());
+                jsonObject.put("language", language.getText());
+                jsonObject.put("rating", Math.round(Float.parseFloat(rating.getText()) * 10) / 10f);
+                jsonObject.put("tags", tagsList.getItems());
+                book = new Book(jsonObject);
+                System.out.println(book.getTitle());
+                System.out.println(book.getSubtitle());
+                System.out.println(book.getAuthors());
+                System.out.println(book.getTranslators());
+                System.out.println(book.getIsbn());
+                System.out.println(book.getPublisher());
+                System.out.println(book.getDate());
+                System.out.println(book.getEdition());
+                System.out.println(book.getCover());
+                System.out.println(book.getLanguage());
+                System.out.println(book.getRating());
+                System.out.println(book.getTags());
+                FileWriter writer = new FileWriter("BookManagementApp\\books\\test.json");writer.write(jsonObject.toString(4));
+                writer.flush();
 
+            }
+            catch (Exception e){
+                System.out.println("Please check the fields and make sure they are filled in correctly.");
+            }
         }
-        catch (Exception e){
-            System.out.println("Please check the fields and make sure they are filled in correctly.");
-        }
+
     }
     @FXML
     protected void onCancelButtonClick() {
         Stage stage = (Stage) cancelButton.getScene().getWindow(); //Gets the window of the scene the button belongs
         stage.close();
+    }
+
+    String INVALID = "-fx-border-color: red; -fx-focus-color: red;"; // Style for highlighting with red
+
+    private boolean isValidTitle() {
+        if (title.getText().isBlank()) {
+            title.setStyle(INVALID);
+            return false;
+        }
+        title.setStyle("");
+        return true;
+    }
+    private boolean isValidAuthors() {
+        if (authorsList.getItems().isEmpty()) {
+            authorsList.setStyle(INVALID);
+            authors.setStyle(INVALID);
+            return false;
+        }
+        authors.setStyle("");
+        authorsList.setStyle("");
+        return true;
+    }
+    private boolean isValidDate() {
+        if (datePicker.getValue() == null) {
+            datePicker.setStyle(INVALID);
+            return false;
+        }
+        datePicker.setStyle("");
+        return true;
+    }
+    private boolean isValidEdition() {
+        try {
+            int checker = Integer.parseInt(edition.getText());
+            if (checker > 0) {
+                edition.setStyle("");
+                return true;
+            }
+            edition.setStyle(INVALID);
+            return false;
+        }
+        catch (Exception e) {
+            edition.setStyle(INVALID);
+            return false;
+        }
+    }
+    private boolean isValidRating() {
+        try {
+            float checker = Float.parseFloat(rating.getText());
+            if (checker >= 0 && checker <= 5 && (Float.compare(checker, -0.0f) != 0)) {
+                rating.setStyle("");
+                return true;
+            }
+            rating.setStyle(INVALID);
+            return false;
+        }
+        catch (Exception e) {
+            rating.setStyle(INVALID);
+            return false;
+        }
     }
 }

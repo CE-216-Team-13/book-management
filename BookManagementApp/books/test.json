@@ -1,21 +1,20 @@
 {
-    "date": "2024-03-07",
+    "date": "2008-08-01",
     "cover": "Paperback",
-    "translators": ["dasdas"],
-    "subtitle": "dasdasdasd",
-    "isbn": "asdasdasdasd",
-    "rating": 1,
-    "publisher": "aasdasdadasd",
-    "edition": 20,
-    "language": "asdasdsa",
-    "title": "asdasdas",
+    "translators": [],
+    "subtitle": "A Handbook of Agile Software Craftsmanship",
+    "isbn": "978-0132350884",
+    "rating": 4.7,
+    "publisher": "Pearson",
+    "edition": 1,
+    "language": "English",
+    "title": "Clean Code",
     "authors": [
-        "sadasdasd",
-        "dasdasd"
+        "Robert Cecil Martin",
+        "Dean Wampler"
     ],
     "tags": [
-        "sadasdasdsadasd",
-        "dasdasdasd",
-        "sadasdasdasdasdasdasdasdasd"
+        "Software",
+        "Computer Science"
     ]
 }
