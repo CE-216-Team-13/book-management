@@ -1,7 +1,6 @@
 package app.bookmanagementapp;
 
 import javafx.application.Application;
-import javafx.event.Event;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -9,15 +8,12 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.json.JSONObject;
-import org.json.JSONWriter;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -51,16 +47,17 @@ public class addBookScreen extends Application {
     Label Lrating = new Label("Rating");
     Label Ltags = new Label("Tags");
 
-    private Book book = new Book(new JSONObject());
+    private Book book = new Book();
 
     @Override
     public void start(Stage stage) throws IOException {
         stage.setMinHeight(510);
         stage.setMinWidth(310);
+        stage.setResizable(true);
         VBox main = new VBox();
+        Scene scene = new Scene(main, 400, 400);
         HBox HBdetails = new HBox();
         HBox HBbuttons = new HBox();
-
         GPdetails.setPadding(new Insets(10, 10, 10, 10));
         GPdetails.addRow(1, Ltitle, TFtitle);
         GPdetails.addRow(2, Lsubtitle, TFsubtitle);
@@ -74,30 +71,67 @@ public class addBookScreen extends Application {
         GPdetails.addRow(10, Lisbn, TFisbn);
         GPdetails.addRow(11, Lrating, Srating);
         GPdetails.addRow(12, Ltags, TFtags);
-        GPdetails.setHgap(15);
-        GPdetails.setVgap(10);
+        GPdetails.setHgap(10);
+        GPdetails.setVgap(8);
         GPdetails.setAlignment(Pos.CENTER);
+        ColumnConstraints left = new ColumnConstraints();
+        ColumnConstraints right = new ColumnConstraints();
+        left.setHgrow(Priority.ALWAYS);
+        left.setFillWidth(true);
+        left.setPercentWidth(15);
+        right.setHgrow(Priority.ALWAYS);
+        right.setFillWidth(true);
+        right.setPercentWidth(85);
+        left.setFillWidth(true);
+        right.setFillWidth(true);
+        GPdetails.getColumnConstraints().addAll(left, right);
+        ArrayList<TextField> textfields = new ArrayList<>(Arrays.asList(TFtitle, TFsubtitle, TFauthors, TFtranslator, TFpublisher, TFedition, TFlanguage, TFpublisher, TFcover, TFisbn, TFtags));
+        ArrayList<Label> labels = new ArrayList<>(Arrays.asList(Ltitle, Lsubtitle, Lauthors, Ltranslator, Lpusblisher, Ledition, Llanguage, Ldate, Lcover, Lisbn, Lrating, Ltags));
+        for (TextField tf : textfields) {
+            GridPane.setHgrow(tf, Priority.ALWAYS);
+            GridPane.setVgrow(tf, Priority.ALWAYS);
+
+        }
+        for (Label l : labels) {
+            GridPane.setHgrow(l, Priority.ALWAYS);
+            GridPane.setVgrow(l, Priority.ALWAYS);
+        }
+        GridPane.setHgrow(DPdate, Priority.ALWAYS);
+        GridPane.setVgrow(DPdate, Priority.ALWAYS);
+        GridPane.setHgrow(Srating, Priority.ALWAYS);
+        GridPane.setVgrow(Srating, Priority.ALWAYS);
+        GridPane.setHgrow(GPdetails, Priority.ALWAYS);
+        GridPane.setVgrow(GPdetails, Priority.ALWAYS);
         HBdetails.getChildren().addAll(GPdetails);
-        HBdetails.fillHeightProperty().set(true);
+        HBdetails.setFillHeight(true);
+    //    HBbuttons.setFillHeight(true);
+        main.setFillWidth(true);
         HBox.setHgrow(GPdetails, Priority.ALWAYS);
         Button Bcancel = new Button("Cancel");
         Bcancel.setOnAction(e -> stage.close());
         Button Bok = new Button("OK");
         Bok.setOnAction(e -> addBook(stage));
-        Bcancel.setMinWidth(stage.getMinWidth() / 2);
-        Bok.setMinWidth(stage.getMinWidth() / 2);
+        Bcancel.minWidthProperty().bind(stage.widthProperty().divide(2));
+        Bok.minWidthProperty().bind(stage.widthProperty().divide(2));
+        Bcancel.minHeightProperty().bind(HBbuttons.heightProperty());
+        Bok.minHeightProperty().bind(HBbuttons.heightProperty());
+
         HBbuttons.getChildren().addAll(Bcancel, Bok);
+     //   HBox.setHgrow(HBbuttons, Priority.ALWAYS);
+        HBox.setHgrow(main, Priority.ALWAYS);
         HBbuttons.setAlignment(Pos.BOTTOM_CENTER);
-
+        HBbuttons.maxHeightProperty().bind(scene.heightProperty().divide(20));
+        VBox.setVgrow(main, Priority.ALWAYS);
+        VBox.setVgrow(HBdetails, Priority.ALWAYS);
+        VBox.setVgrow(GPdetails, Priority.ALWAYS);
+        VBox.setVgrow(HBbuttons, Priority.ALWAYS);
         main.getChildren().addAll(HBdetails, HBbuttons);
-        Scene scene = new Scene(main, 400, 400);
-
         stage.setScene(scene);
         stage.show();
     }
 
     public String generateName() {
-        return "book_" + String.valueOf(System.currentTimeMillis()) + ".json";
+        return "book_" + System.currentTimeMillis() + ".json";
     }
 
     public void addBook(Stage stage) {
@@ -141,6 +175,7 @@ public class addBookScreen extends Application {
             fw.write(json.toString());
             fw.close();
         } catch (Exception a) {
+            a.printStackTrace();
         }
 
         stage.close();
@@ -152,3 +187,4 @@ public class addBookScreen extends Application {
     }
 
 }
+
