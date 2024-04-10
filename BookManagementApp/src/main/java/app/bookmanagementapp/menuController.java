@@ -19,22 +19,24 @@ public class menuController implements Initializable {
     private Label welcomeText;
 
 
-   @FXML
-    void open3(ActionEvent event) {
-
-        Alert alert= new Alert(Alert.AlertType.NONE);
-        alert.setTitle("Book Information");
-        alert.setContentText("Tittle: ");
-        alert.showAndWait();
-
-        //jsondan kitap bilgilerini çekip, yazıcaz
-
-    }
+   
 
     @FXML
     private Button btnok;
 
+    @FXML
+    private MenuItem closee;
 
+    Stage stage;
+    @FXML
+    void logout(ActionEvent event) {
+
+        stage=(Stage) root.getScene().getWindow();
+        System.out.println("You successfully logged out!");
+        stage.close();
+
+
+    }
 
     @FXML
     void openabout(ActionEvent event) {
