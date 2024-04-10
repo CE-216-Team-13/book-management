@@ -19,7 +19,20 @@ public class menuController implements Initializable {
     private Label welcomeText;
 
 
+   @FXML
+    void open3(ActionEvent event) {
 
+        Alert alert= new Alert(Alert.AlertType.NONE);
+        alert.setTitle("Book Information");
+        alert.setContentText("Tittle: ");
+        alert.showAndWait();
+
+        //jsondan kitap bilgilerini çekip, yazıcaz
+
+    }
+
+    @FXML
+    private Button btnok;
 
 
 
