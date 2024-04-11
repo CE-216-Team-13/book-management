@@ -1,10 +1,15 @@
-package com.example.menu;
+package app.bookmanagementapp;
 
+import app.bookmanagementapp.Book;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuItem;
+import javafx.stage.Stage;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -31,7 +36,7 @@ public class menuController implements Initializable {
     @FXML
     void logout(ActionEvent event) {
 
-        stage=(Stage) root.getScene().getWindow();
+        //stage=(Stage) root.getScene().getWindow();
         System.out.println("You successfully logged out!");
         stage.close();
 

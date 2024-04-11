@@ -17,7 +17,7 @@
       </Label>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" VBox.vgrow="NEVER">
         <buttons>
-          <Button mnemonicParsing="false" text="Delete" onAction="#onDeleteButtonClick"/>
+          <Button mnemonicParsing="false" text="Delete" fx:id="deleteButton" onAction="#onDeleteButtonClick"/>
             <Button mnemonicParsing="false" text="Cancel" fx:id="cancelButton" onAction="#onCancelButtonClick"/>
         </buttons>
          <padding>

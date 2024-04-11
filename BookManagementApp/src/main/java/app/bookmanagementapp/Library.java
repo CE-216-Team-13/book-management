@@ -1,26 +1,60 @@
 package app.bookmanagementapp;
 
+import org.json.JSONObject;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Library {
-    private ArrayList<String> books;
-    private Paths directory;
+    private static Library library;
+    private ArrayList<Book> books;
+    private Path directory;
     private JsonController controller;
 
-    public ArrayList<String> getBooks() {
+    private Library() {}
+
+    public static synchronized Library getInstance() {
+        if (library == null) {
+            library = new Library();
+        }
+        library.setDirectory(Paths.get("BookManagementApp/books"));
+        ArrayList<JSONObject> jsonObjects = new ArrayList<>();
+        library.books = new ArrayList<Book>();
+
+        try (Stream<Path> stream = Files.walk(library.directory)){
+            List<Path> files = stream.filter(Files::isRegularFile).toList();
+            for (Path path: files) {
+                JSONObject jsonObject = new JSONObject(path);
+                Book book = new Book(jsonObject);
+                library.books.add(book);
+            }
+        }
+        catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return library;
+    }
+
+    public ArrayList<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(ArrayList<String> books) {
+    public void setBooks(ArrayList<Book> books) {
         this.books = books;
     }
 
-    public Paths getDirectory() {
+    public Path getDirectory() {
         return directory;
     }
 
-    public void setDirectory(Paths directory) {
+    public void setDirectory(Path directory) {
         this.directory = directory;
     }
 
