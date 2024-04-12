@@ -9,6 +9,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -104,7 +105,7 @@ public class addBookScreen extends Application {
         GridPane.setVgrow(GPdetails, Priority.ALWAYS);
         HBdetails.getChildren().addAll(GPdetails);
         HBdetails.setFillHeight(true);
-    //    HBbuttons.setFillHeight(true);
+        //    HBbuttons.setFillHeight(true);
         main.setFillWidth(true);
         HBox.setHgrow(GPdetails, Priority.ALWAYS);
         Button Bcancel = new Button("Cancel");
@@ -117,7 +118,7 @@ public class addBookScreen extends Application {
         Bok.minHeightProperty().bind(HBbuttons.heightProperty());
 
         HBbuttons.getChildren().addAll(Bcancel, Bok);
-     //   HBox.setHgrow(HBbuttons, Priority.ALWAYS);
+        //   HBox.setHgrow(HBbuttons, Priority.ALWAYS);
         HBox.setHgrow(main, Priority.ALWAYS);
         HBbuttons.setAlignment(Pos.BOTTOM_CENTER);
         HBbuttons.maxHeightProperty().bind(scene.heightProperty().divide(20));
@@ -155,6 +156,10 @@ public class addBookScreen extends Application {
         book.setTags(new ArrayList<>(List.of(Arrays.toString(TFtags.getText().split(";")))));
         try {
             String filename = generateName();
+            File d = new File("books");
+            if (!d.exists()) {
+                d.mkdir();
+            }
             Path directory = Paths.get("books", filename);
             Files.createFile(directory);
             JSONObject json = new JSONObject();
@@ -187,4 +192,3 @@ public class addBookScreen extends Application {
     }
 
 }
-
