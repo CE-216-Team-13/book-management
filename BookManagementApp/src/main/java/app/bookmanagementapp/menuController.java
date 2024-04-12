@@ -15,6 +15,12 @@ import java.util.ResourceBundle;
 
 public class menuController implements Initializable {
 
+    private String location;
+    private Book book;
+    private void setLocationAndBook(String location, Book book) {
+        this.location = location;
+        this.book = book;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
