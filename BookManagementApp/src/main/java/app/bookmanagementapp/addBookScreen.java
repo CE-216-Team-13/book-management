@@ -160,7 +160,7 @@ public class addBookScreen extends Application {
             if (!d.exists()) {
                 d.mkdir();
             }
-            Path directory = Paths.get("books", filename);
+            Path directory = Paths.get("book-management\\BookManagementApp\\books", filename);
             Files.createFile(directory);
             JSONObject json = new JSONObject();
             json.put("title", book.getTitle());
