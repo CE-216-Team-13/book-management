@@ -149,6 +149,8 @@ public class addBookScreen extends Application {
             } catch (DateTimeParseException d) {
                 book.setDate("");
             }
+        } else {
+            book.setDate("");
         }
         book.setCover(String.valueOf(TFcover.getText()));
         book.setIsbn(String.valueOf(TFisbn.getText()));
