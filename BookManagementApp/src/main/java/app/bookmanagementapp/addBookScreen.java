@@ -156,7 +156,7 @@ public class addBookScreen extends Application {
         book.setTags(new ArrayList<>(List.of(Arrays.toString(TFtags.getText().split(";")))));
         try {
             String filename = generateName();
-            File d = new File("books");
+            File d = new File("book-management\\BookManagementApp\\books");
             if (!d.exists()) {
                 d.mkdir();
             }
