@@ -158,11 +158,11 @@ public class addBookScreen extends Application {
         book.setTags(new ArrayList<>(List.of(Arrays.toString(TFtags.getText().split(";")))));
         try {
             String filename = generateName();
-            File d = new File("books");
+            File d = new File("BookManagementApp\\books");
             if (!d.exists()) {
                 d.mkdir();
             }
-            Path directory = Paths.get("books", filename);
+            Path directory = Paths.get("BookManagementApp\\books", filename);
             Files.createFile(directory);
             JSONObject json = new JSONObject();
             json.put("title", book.getTitle());
