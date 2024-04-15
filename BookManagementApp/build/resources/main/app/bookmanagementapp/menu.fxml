@@ -18,6 +18,7 @@
             <items>
               <MenuItem mnemonicParsing="false" text="Close" />
                   <MenuItem mnemonicParsing="false" text="Import" onAction="#onImportButtonClick" fx:id="importMenu"/>
+                <MenuItem mnemonicParsing="false" text="Create" onAction="#onCreateButtonClick"/>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

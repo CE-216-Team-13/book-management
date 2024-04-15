@@ -31,6 +31,7 @@ public class MenuController implements Initializable {
     @FXML
     private MenuItem importMenu;
     private ImportBookScreen importscreen;
+    private addBookScreen addbook;
     private GridPane gridPane;
 
     @FXML
@@ -99,6 +100,12 @@ public class MenuController implements Initializable {
         importscreen = new ImportBookScreen();
         importscreen.start(new Stage());
     }
+@FXML
+protected void onCreateButtonClick() throws IOException {
+        addbook = new addBookScreen();
+        addbook.start(new Stage());
+}
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
