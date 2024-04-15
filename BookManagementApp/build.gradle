@@ -28,7 +28,7 @@ tasks.withType(JavaCompile).configureEach {
 
 application {
     mainModule = 'app.bookmanagementapp'
-    mainClass = 'app.bookmanagementapp.HelloApplication'
+    mainClass = 'app.bookmanagementapp.Main'
 }
 
 javafx {
