@@ -9,9 +9,17 @@ import org.json.JSONTokener;
 import java.io.File;
 import java.io.FileReader;
 
-public class ImportBookScreen{
+public class ImportBookScreen {
     private Book book;
+    private Stage stage;
 
+    public ImportBookScreen(Stage stage) {
+        this.stage = stage;
+    }
+public ImportBookScreen(){}
+    public Stage getStage() {
+        return stage;
+    }
 
     public void start(Stage stage) throws Exception {
         FileChooser fileChooser = new FileChooser();
@@ -25,7 +33,7 @@ public class ImportBookScreen{
             try {
                 FileReader reader = new FileReader(selectedFile);
                 JSONObject j = new JSONObject((new JSONTokener(reader)));
-                book = new Book(j);
+                this.book = new Book(j);
             } catch (Exception e) {
                 e.printStackTrace();
             }

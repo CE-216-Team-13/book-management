@@ -1,4 +1,5 @@
 package app.bookmanagementapp;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,7 +21,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class MenuController implements Initializable{
+public class MenuController implements Initializable {
     @FXML
     private Button searchButton;
     @FXML
@@ -29,8 +30,9 @@ public class MenuController implements Initializable{
     private VBox vBox;
     @FXML
     private MenuItem importMenu;
-
+    private ImportBookScreen importscreen;
     private GridPane gridPane;
+
     @FXML
     protected void onSearchButtonClick() {
         if (!searchBar.getText().isBlank()) {
@@ -38,7 +40,7 @@ public class MenuController implements Initializable{
             ArrayList<Book> books = Library.getInstance().getBooks();
             ArrayList<Book> results = new ArrayList<>();
             int index = 0;
-            for (Book book: books) {
+            for (Book book : books) {
                 System.out.println();
                 String data = book.getTitle();
                 if (data.toLowerCase().contains(searchBar.getText().toLowerCase())) {
@@ -46,36 +48,39 @@ public class MenuController implements Initializable{
                     VBox bookBox = new VBox();
                     Button deleteButton = new Button("Delete");
                     Button editButton = new Button("Edit");
-                    deleteButton.setOnAction(actionEvent -> {try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Delete_Window.fxml"));
-                        Parent root = loader.load();
-                        DeleteController deleteController = loader.getController();
-                        deleteController.setLocationAndBook(book.getLocation(), book);
-                        System.out.println(book.getLocation());
+                    deleteButton.setOnAction(actionEvent -> {
+                        try {
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("Delete_Window.fxml"));
+                            Parent root = loader.load();
+                            DeleteController deleteController = loader.getController();
+                            deleteController.setLocationAndBook(book.getLocation(), book);
+                            System.out.println(book.getLocation());
 
-                        Stage stage = new Stage();
-                        stage.setScene(new Scene(root));
+                            Stage stage = new Stage();
+                            stage.setScene(new Scene(root));
 
-                        stage.show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }});
-
-                    editButton.setOnAction(actionEvent -> {try {
-                        FXMLLoader editLoader = new FXMLLoader(getClass().getResource("Edit_Window.fxml"));
-                        Parent editRoot = editLoader.load();
-                        EditController editController = editLoader.getController();
-                        editController.setLocationAndBook(book.getLocation(), book);
-
-                        Stage stage = new Stage();
-                        stage.setScene(new Scene(editRoot));
-                        stage.show();
-                    }
-                    catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                            stage.show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     });
-                    // IMPORT LOGIC GOES HERE importMenu.setOnAction(actionEvent {});
+
+                    editButton.setOnAction(actionEvent -> {
+                        try {
+                            FXMLLoader editLoader = new FXMLLoader(getClass().getResource("Edit_Window.fxml"));
+                            Parent editRoot = editLoader.load();
+                            EditController editController = editLoader.getController();
+                            editController.setLocationAndBook(book.getLocation(), book);
+
+                            Stage stage = new Stage();
+                            stage.setScene(new Scene(editRoot));
+                            stage.show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+
+
                     bookBox.getChildren().add(new Label("Title: " + book.getTitle()));
                     bookBox.getChildren().add(new Label("Subtitle: " + book.getSubtitle()));
                     bookBox.getChildren().add(deleteButton);
@@ -87,6 +92,12 @@ public class MenuController implements Initializable{
                 }
             }
         }
+    }
+
+    @FXML
+    protected void onImportButtonClick() throws Exception {
+        importscreen = new ImportBookScreen();
+        importscreen.start(new Stage());
     }
 
     @Override
