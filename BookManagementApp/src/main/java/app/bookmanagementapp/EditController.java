@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 public class EditController implements Initializable {
     private String location;
     private Book book;
-    private void setLocationAndBook(String location, Book book) {
+    public void setLocationAndBook(String location, Book book) {
         this.location = location;
         this.book = book;
     }

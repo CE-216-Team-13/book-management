@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class addBookScreen extends Application {
+    private String location;
     private TextField TFtitle = new TextField();
     private TextField TFsubtitle = new TextField();
     private TextField TFauthors = new TextField();
@@ -52,6 +53,7 @@ public class addBookScreen extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        DPdate.setEditable(false);
         stage.setMinHeight(510);
         stage.setMinWidth(310);
         stage.setResizable(true);
@@ -132,7 +134,8 @@ public class addBookScreen extends Application {
     }
 
     public String generateName() {
-        return "book_" + System.currentTimeMillis() + ".json";
+        location =  "book_" + System.currentTimeMillis() + ".json";
+        return location;
     }
 
     public void addBook(Stage stage) {
@@ -158,6 +161,7 @@ public class addBookScreen extends Application {
         book.setTags(new ArrayList<>(List.of(Arrays.toString(TFtags.getText().split(";")))));
         try {
             String filename = generateName();
+            book.setLocation(location);
             File d = new File("BookManagementApp\\books");
             if (!d.exists()) {
                 d.mkdir();

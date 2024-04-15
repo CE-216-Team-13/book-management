@@ -1,6 +1,5 @@
 package app.bookmanagementapp;
 
-import javafx.application.Application;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.json.JSONObject;
@@ -10,15 +9,10 @@ import org.json.JSONTokener;
 import java.io.File;
 import java.io.FileReader;
 
-public class importBookScreen extends Application {
+public class ImportBookScreen{
     private Book book;
 
-    public static void main(String[] args) {
-        launch(args);
 
-    }
-
-    @Override
     public void start(Stage stage) throws Exception {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select JSON File");

@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 public class DeleteController implements Initializable {
     private String location;
     private Book book;
-    private void setLocationAndBook(String location, Book book) {
+    public void setLocationAndBook(String location, Book book) {
         this.location = location;
         this.book = book;
     }
@@ -47,6 +47,6 @@ public class DeleteController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setLocationAndBook("BookManagementApp\\books\\test.json", Library.getInstance().getBooks().get(0)); // THIS IS A PLACEHOLDER
+        //setLocationAndBook("BookManagementApp\\books\\test.json", Library.getInstance().getBooks().get(0)); // THIS IS A PLACEHOLDER
     }
 }

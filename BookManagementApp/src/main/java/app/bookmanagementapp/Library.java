@@ -31,13 +31,14 @@ public class Library {
         try (Stream<Path> stream = Files.walk(library.directory)){
             List<Path> files = stream.filter(Files::isRegularFile).toList();
             for (Path path: files) {
-                JSONObject jsonObject = new JSONObject(path);
+                JSONObject jsonObject = new JSONObject(Files.readString(path));
                 Book book = new Book(jsonObject);
+                book.setLocation(path.toString());
                 library.books.add(book);
             }
         }
         catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Library Error");
         }
         return library;
     }

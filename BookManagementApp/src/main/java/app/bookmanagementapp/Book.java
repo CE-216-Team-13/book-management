@@ -71,6 +71,7 @@ public class Book {
     public Book() {
 
     }
+    private String location;
 
     private String title, subtitle, isbn, publisher, date, cover, language, image, edition;
     private float rating;
@@ -178,6 +179,13 @@ public class Book {
 
     public void setTags(ArrayList<String> tags) {
         this.tags = tags;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    public String getLocation() {
+        return this.location;
     }
 
     public static void main(String args[]) {
