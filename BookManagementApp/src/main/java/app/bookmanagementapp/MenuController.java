@@ -36,63 +36,7 @@ public class MenuController implements Initializable {
 
     @FXML
     protected void onSearchButtonClick() {
-        if (!searchBar.getText().isBlank()) {
-            gridPane.getChildren().clear();
-            ArrayList<Book> books = Library.getInstance().getBooks();
-            ArrayList<Book> results = new ArrayList<>();
-            int index = 0;
-            for (Book book : books) {
-                System.out.println();
-                String data = book.getTitle();
-                if (data.toLowerCase().contains(searchBar.getText().toLowerCase())) {
-                    results.add(book);
-                    VBox bookBox = new VBox();
-                    Button deleteButton = new Button("Delete");
-                    Button editButton = new Button("Edit");
-                    deleteButton.setOnAction(actionEvent -> {
-                        try {
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("Delete_Window.fxml"));
-                            Parent root = loader.load();
-                            DeleteController deleteController = loader.getController();
-                            deleteController.setLocationAndBook(book.getLocation(), book);
-                            System.out.println(book.getLocation());
 
-                            Stage stage = new Stage();
-                            stage.setScene(new Scene(root));
-
-                            stage.show();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    });
-
-                    editButton.setOnAction(actionEvent -> {
-                        try {
-                            FXMLLoader editLoader = new FXMLLoader(getClass().getResource("Edit_Window.fxml"));
-                            Parent editRoot = editLoader.load();
-                            EditController editController = editLoader.getController();
-                            editController.setLocationAndBook(book.getLocation(), book);
-
-                            Stage stage = new Stage();
-                            stage.setScene(new Scene(editRoot));
-                            stage.show();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    });
-
-
-                    bookBox.getChildren().add(new Label("Title: " + book.getTitle()));
-                    bookBox.getChildren().add(new Label("Subtitle: " + book.getSubtitle()));
-                    bookBox.getChildren().add(deleteButton);
-                    bookBox.getChildren().add(editButton);
-                    GridPane.setRowIndex(bookBox, index);
-                    gridPane.getChildren().add(bookBox);
-                    bookBox.setStyle("-fx-border-color: blue; -fx-focus-color: blue;");
-                    index++;
-                }
-            }
-        }
     }
 
     @FXML
@@ -100,8 +44,8 @@ public class MenuController implements Initializable {
         importscreen = new ImportBookScreen();
         importscreen.start(new Stage());
     }
-@FXML
-protected void onCreateButtonClick() throws IOException {
+    @FXML
+    protected void onCreateButtonClick() throws IOException {
         addbook = new addBookScreen();
         addbook.start(new Stage());
 }
@@ -109,12 +53,6 @@ protected void onCreateButtonClick() throws IOException {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        gridPane = new GridPane();
-        gridPane.setHgap(10);
-        gridPane.setVgap(10);
-        VBox.setVgrow(gridPane, Priority.ALWAYS);
-        VBox.setVgrow(vBox, Priority.ALWAYS);
 
-        vBox.getChildren().add(gridPane);
     }
 }

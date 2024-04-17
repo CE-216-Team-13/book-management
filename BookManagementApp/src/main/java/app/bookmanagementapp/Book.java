@@ -187,18 +187,4 @@ public class Book {
     public String getLocation() {
         return this.location;
     }
-
-    public static void main(String args[]) {
-        try {
-
-            System.out.println(System.getProperty("user.dir"));
-            FileReader reader = new FileReader("BookManagementApp\\books\\test.json");
-            JSONObject j = new JSONObject((new JSONTokener(reader)));
-            Book b = new Book(j);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
 }
-

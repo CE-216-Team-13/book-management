@@ -39,10 +39,6 @@ public class EditController implements Initializable {
         paperback.setToggleGroup(toggleGroup);
         hardCover.setSelected(true);
 
-        //THE TWO LINES BELOW ARE PLACEHOLDERS FOR TESTING. THEY ARE GOING TO BE DELETED SOON.
-        Book testBook = new Book();
-        this.setLocationAndBook("BookManagementApp\\books\\test.json", testBook);
-
 
         title.setText(book.getTitle());
         subtitle.setText(book.getSubtitle());
@@ -158,18 +154,7 @@ public class EditController implements Initializable {
                 jsonObject.put("language", language.getText());
                 jsonObject.put("tags", tagsList.getItems());
                 book = new Book(jsonObject);
-                System.out.println(book.getTitle());
-                System.out.println(book.getSubtitle());
-                System.out.println(book.getAuthors());
-                System.out.println(book.getTranslators());
-                System.out.println(book.getIsbn());
-                System.out.println(book.getPublisher());
-                System.out.println(book.getDate());
-                System.out.println(book.getEdition());
-                System.out.println(book.getCover());
-                System.out.println(book.getLanguage());
-                System.out.println(book.getRating());
-                System.out.println(book.getTags());
+
                 FileWriter writer = new FileWriter(this.location);
                 writer.write(jsonObject.toString(4));
                 writer.flush();

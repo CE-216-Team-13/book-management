@@ -35,7 +35,6 @@ public class DeleteController implements Initializable {
     }
     @FXML
     protected void onDeleteButtonClick() {
-        //TO-DO: Implement deletion operation
         Library.getInstance().getBooks().remove(book);
         File file = new File(location);
         file.delete();
