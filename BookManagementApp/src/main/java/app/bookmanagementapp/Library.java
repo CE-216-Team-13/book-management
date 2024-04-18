@@ -66,5 +66,27 @@ public class Library {
     public void setController(JsonController controller) {
         this.controller = controller;
     }
+
+    public ArrayList<Book> search(String str) {
+        ArrayList<Book> results = new ArrayList<>();
+        for (Book book: books) {
+            if (book.getTitle().toLowerCase().contains(str.toLowerCase()) ||
+                book.getSubtitle().toLowerCase().contains(str.toLowerCase()) ||
+                    book.getIsbn().toLowerCase().contains(str.toLowerCase()) ||
+                    book.getPublisher().toLowerCase().contains(str.toLowerCase()) ||
+                    book.getDate().toLowerCase().contains(str.toLowerCase()) ||
+                    book.getCover().toLowerCase().contains(str.toLowerCase()) ||
+                    book.getLanguage().toLowerCase().contains(str.toLowerCase()) ||
+                    book.getEdition().toLowerCase().contains(str.toLowerCase()) ||
+                    Float.toString(book.getRating()).toLowerCase().contains(str.toLowerCase()) ||
+                    book.getAuthors().stream().anyMatch(author -> author.toLowerCase().contains(str.toLowerCase())) ||
+                    book.getTranslators().stream().anyMatch(translator -> translator.toLowerCase().contains(str.toLowerCase())) ||
+                    book.getTags().stream().anyMatch(tag -> tag.toLowerCase().contains(str.toLowerCase()))
+            ) {
+                results.add(book);
+            }
+        }
+        return results;
+    }
 }
 
