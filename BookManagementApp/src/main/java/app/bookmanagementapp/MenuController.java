@@ -9,6 +9,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
@@ -149,10 +151,21 @@ public class MenuController implements Initializable {
         container.setMinSize(250, 350);
         container.setMaxSize(250, 350);
         container.setPrefSize(250, 350);
+        container.setAlignment(Pos.CENTER);
         Region fillerNode = new Region();
         VBox.setVgrow(fillerNode, Priority.ALWAYS);
 
         container.getChildren().add(fillerNode);
+        if (book.getImage() != null) {
+            if (!book.getImage().isBlank()) {
+                System.out.println(book.getImage());
+                ImageView imageView = new ImageView(new Image(book.getImage()));
+                imageView.setFitHeight(200);
+                imageView.setFitWidth(150);
+                container.getChildren().add(imageView);
+                imageView.setPreserveRatio(true);
+            }
+        }
         container.getChildren().add(new Label("Title: " + book.getTitle()));
         container.getChildren().add(new Label("Subtitle: " + book.getSubtitle()));
         container.getChildren().add(new Label("Publisher: " + book.getPublisher()));
