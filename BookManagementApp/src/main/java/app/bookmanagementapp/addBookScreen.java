@@ -32,7 +32,7 @@ public class addBookScreen extends Application {
     private TextField TFlanguage = new TextField();
     private TextField TFcover = new TextField();
     private TextField TFisbn = new TextField();
-    TextField TFtags = new TextField();
+   private TextField TFtags = new TextField();
     private DatePicker DPdate = new DatePicker();
     private Spinner<Object> Srating = new Spinner<>(0, 5, 0, 0.1);
     private GridPane GPdetails = new GridPane();
@@ -138,14 +138,32 @@ public class addBookScreen extends Application {
         return location;
     }
 
+
     public void addBook(Stage stage) {
-        book.setTitle(String.valueOf(TFtitle.getText()));
-        book.setSubtitle(String.valueOf(TFsubtitle.getText()));
-        book.setAuthors(new ArrayList<>(List.of(String.valueOf(TFauthors.getText()).split(";"))));
-        book.setTranslators(new ArrayList<>(List.of(String.valueOf(TFtranslator.getText()).split(";"))));
-        book.setPublisher(String.valueOf(TFpublisher.getText()));
-        book.setEdition(String.valueOf(TFedition.getText()));
-        book.setLanguage(String.valueOf(TFlanguage.getText()));
+        if (!TFtitle.getText().isBlank()) {
+            book.setTitle(String.valueOf(TFtitle.getText()));
+        }
+        if (!TFsubtitle.getText().isBlank()) {
+            book.setSubtitle(String.valueOf(TFsubtitle.getText()));
+        }
+        if (!TFauthors.getText().isBlank()) {
+            book.setAuthors(new ArrayList<>(List.of(String.valueOf(TFauthors.getText()).split(";"))));
+        }
+        if (!TFtranslator.getText().isBlank()) {
+            book.setTranslators(new ArrayList<>(List.of(String.valueOf(TFtranslator.getText()).split(";"))));
+        }
+        if (!TFpublisher.getText().isBlank()) {
+            book.setPublisher(String.valueOf(TFpublisher.getText()));
+        }
+
+        if (!String.valueOf(TFedition.getText()).isBlank()) {
+            book.setEdition(String.valueOf(TFedition.getText()));
+        }
+
+        if (!TFlanguage.getText().isBlank()) {
+            book.setLanguage(String.valueOf(TFlanguage.getText()));
+        }
+
         if (DPdate.getValue() != null) {
             try {
                 book.setDate(DPdate.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE));
@@ -155,10 +173,20 @@ public class addBookScreen extends Application {
         } else {
             book.setDate("");
         }
-        book.setCover(String.valueOf(TFcover.getText()));
-        book.setIsbn(String.valueOf(TFisbn.getText()));
+        if (!TFcover.getText().isBlank()) {
+            book.setCover(String.valueOf(TFcover.getText()));
+        }
+
+        if (!TFisbn.getText().isBlank()) {
+            book.setIsbn(String.valueOf(TFisbn.getText()));
+        }
+
+
         book.setRating(Float.parseFloat(Srating.getValue().toString()));
-        book.setTags(new ArrayList<>(List.of(Arrays.toString(TFtags.getText().split(";")))));
+        if (!TFtags.getText().isBlank()) {
+            book.setTags(new ArrayList<>(List.of(Arrays.toString(TFtags.getText().split(";")))));
+        }
+
         try {
             String filename = generateName();
             book.setLocation(location);
@@ -179,9 +207,15 @@ public class addBookScreen extends Application {
             json.put("image", book.getImage());
             json.put("edition", book.getEdition());
             json.put("rating", book.getRating());
-            json.put("authors", book.getAuthors());
-            json.put("translators", book.getTranslators());
-            json.put("tags", book.getTags());
+            if (book.getAuthors() != null) {
+                json.put("authors", book.getAuthors());
+            }
+            if (book.getTranslators() != null) {
+                json.put("translators", book.getTranslators());
+            }
+            if (book.getTags() != null) {
+                json.put("tags", book.getTags());
+            }
             FileWriter fw = new FileWriter(directory.toString());
             fw.write(json.toString());
             fw.close();
