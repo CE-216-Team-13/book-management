@@ -19,6 +19,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class addBookScreen extends Application {
@@ -32,7 +33,7 @@ public class addBookScreen extends Application {
     private TextField TFlanguage = new TextField();
     private TextField TFcover = new TextField();
     private TextField TFisbn = new TextField();
-   private TextField TFtags = new TextField();
+    private TextField TFtags = new TextField();
     private DatePicker DPdate = new DatePicker();
     private Spinner<Object> Srating = new Spinner<>(0, 5, 0, 0.1);
     private GridPane GPdetails = new GridPane();
@@ -134,7 +135,7 @@ public class addBookScreen extends Application {
     }
 
     public String generateName() {
-        location =  "book_" + System.currentTimeMillis() + ".json";
+        location = "book_" + System.currentTimeMillis() + ".json";
         return location;
     }
 
@@ -147,10 +148,20 @@ public class addBookScreen extends Application {
             book.setSubtitle(String.valueOf(TFsubtitle.getText()));
         }
         if (!TFauthors.getText().isBlank()) {
-            book.setAuthors(new ArrayList<>(List.of(String.valueOf(TFauthors.getText()).split(";"))));
+            String text = TFauthors.getText();
+            ArrayList<String> a1 = new ArrayList<>(List.of(text.split(";")));
+            for (int i = 0; i < a1.size(); i++) {
+                a1.set(i, a1.get(i).trim());
+            }
+            book.setAuthors(a1);
         }
         if (!TFtranslator.getText().isBlank()) {
-            book.setTranslators(new ArrayList<>(List.of(String.valueOf(TFtranslator.getText()).split(";"))));
+            String text = TFtranslator.getText();
+            ArrayList<String> a1 = new ArrayList<>(List.of(text.split(";")));
+            for (int i = 0; i < a1.size(); i++) {
+                a1.set(i, a1.get(i).trim());
+            }
+            book.setTranslators(a1);
         }
         if (!TFpublisher.getText().isBlank()) {
             book.setPublisher(String.valueOf(TFpublisher.getText()));
@@ -184,7 +195,12 @@ public class addBookScreen extends Application {
 
         book.setRating(Float.parseFloat(Srating.getValue().toString()));
         if (!TFtags.getText().isBlank()) {
-            book.setTags(new ArrayList<>(List.of(Arrays.toString(TFtags.getText().split(";")))));
+            String text = TFtags.getText();
+            ArrayList<String> a1 = new ArrayList<>(List.of(text.split(";")));
+            for (int i = 0; i < a1.size(); i++) {
+                a1.set(i, a1.get(i).trim());
+            }
+            book.setTags(a1);
         }
 
         try {
