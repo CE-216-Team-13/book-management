@@ -35,7 +35,7 @@ public class ImportBookScreen {
                 new FileChooser.ExtensionFilter("JSON", "*.json"));
         File selectedFile = fileChooser.showOpenDialog(stage);
         String a = selectedFile.getAbsolutePath();
-        System.out.println(a);
+        //System.out.println(a);
         if (selectedFile != null) {
             try {
                 FileReader reader = new FileReader(selectedFile);

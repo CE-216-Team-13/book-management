@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.json.JSONObject;
 
@@ -115,12 +116,15 @@ public class addBookScreen extends Application {
         Bcancel.setOnAction(e -> stage.close());
         Button Bok = new Button("OK");
         Bok.setOnAction(e -> addBook(stage));
-        Bcancel.minWidthProperty().bind(stage.widthProperty().divide(2));
-        Bok.minWidthProperty().bind(stage.widthProperty().divide(2));
+        Button Bimage = new Button("Image ");
+        Bimage.setOnAction(e -> addImage(stage));
+        Bcancel.minWidthProperty().bind(stage.widthProperty().divide(3));
+        Bok.minWidthProperty().bind(stage.widthProperty().divide(3));
+        Bimage.minWidthProperty().bind(stage.widthProperty().divide(3));
         Bcancel.minHeightProperty().bind(HBbuttons.heightProperty());
         Bok.minHeightProperty().bind(HBbuttons.heightProperty());
-
-        HBbuttons.getChildren().addAll(Bcancel, Bok);
+        Bimage.minHeightProperty().bind(HBbuttons.heightProperty());
+        HBbuttons.getChildren().addAll(Bcancel, Bok, Bimage);
         //   HBox.setHgrow(HBbuttons, Priority.ALWAYS);
         HBox.setHgrow(main, Priority.ALWAYS);
         HBbuttons.setAlignment(Pos.BOTTOM_CENTER);
@@ -139,6 +143,16 @@ public class addBookScreen extends Application {
         return location;
     }
 
+    public void addImage(Stage stage) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Image File");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG", "*.PNG"),
+                new FileChooser.ExtensionFilter("JPEG", "*.JPEG"));
+
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        String a = selectedFile.getAbsolutePath();
+        //System.out.println(a);
+    }
 
     public void addBook(Stage stage) {
         if (!TFtitle.getText().isBlank()) {
