@@ -13,10 +13,6 @@ import java.util.ResourceBundle;
 public class EditController implements Initializable {
     private String location;
     private Book book;
-    public void setLocationAndBook(String location, Book book) {
-        this.location = location;
-        this.book = book;
-    }
     @FXML
     private DatePicker datePicker;
     @FXML
@@ -31,8 +27,13 @@ public class EditController implements Initializable {
     private ListView<String> authorsList, translatorsList, tagsList;
     String INVALID = "-fx-border-color: red; -fx-focus-color: red;"; // Style for highlighting with red
 
+    public EditController(String location, Book book) {
+        this.location = location;
+        this.book = book;
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         datePicker.setEditable(false);
         toggleGroup = new ToggleGroup();
         hardCover.setToggleGroup(toggleGroup);

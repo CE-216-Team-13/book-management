@@ -5,13 +5,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.json.JSONObject;
@@ -45,7 +44,7 @@ public class MenuController implements Initializable {
         if (!searchBar.getText().isBlank()) {
             setResults();
             if (results != null) {
-                displayBooks(results, 5);
+                displayBooks(results, 4);
             }
         }
     }
@@ -76,7 +75,7 @@ public class MenuController implements Initializable {
         gridPane.setPadding(new Insets(10, 10, 10, 10));
         gridPane.widthProperty().addListener((observable, newWidth, oldWidth) -> {
             int width = newWidth.intValue();
-            int maxColumns = width / 200;
+            int maxColumns = 4;
             if (results != null) {
                 displayBooks(results, maxColumns);
             }
@@ -102,30 +101,74 @@ public class MenuController implements Initializable {
         results = Library.getInstance().search(searchBar.getText());
     }
     public VBox createBookBox(Book book) {
+        HBox buttonBox = new HBox();
+        Button editButton = new Button("Edit");
+        Button deleteButton = new Button("Delete");
+        Button detailsButton = new Button("Details");
+        buttonBox.getChildren().addAll(editButton, deleteButton, detailsButton);
+        buttonBox.setAlignment(Pos.BOTTOM_CENTER);
+
+        editButton.setPrefWidth(80);
+        deleteButton.setPrefWidth(80);
+        detailsButton.setPrefWidth(80);
+
+        editButton.setOnAction(event -> {
+            System.out.println(book.getTitle());
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Edit_Window.fxml"));
+                loader.setControllerFactory(cls -> new EditController(book.getLocation(), book));
+                Parent root = loader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        deleteButton.setOnAction(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Delete_Window.fxml"));
+                loader.setControllerFactory(cls -> new DeleteController(book.getLocation(), book));
+                Parent root = loader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        HBox.setHgrow(editButton, Priority.ALWAYS);
+        HBox.setHgrow(detailsButton, Priority.ALWAYS);
+        HBox.setHgrow(deleteButton, Priority.ALWAYS);
+
         VBox container = new VBox();
-        container.setMinSize(200, 300);
-        container.setMaxSize(200, 300);
-        container.setPrefSize(200, 300);
+        container.setMinSize(250, 350);
+        container.setMaxSize(250, 350);
+        container.setPrefSize(250, 350);
+        Region fillerNode = new Region();
+        VBox.setVgrow(fillerNode, Priority.ALWAYS);
+
+        container.getChildren().add(fillerNode);
         container.getChildren().add(new Label("Title: " + book.getTitle()));
         container.getChildren().add(new Label("Subtitle: " + book.getSubtitle()));
-        container.getChildren().add(new Label("ISBN: " + book.getIsbn()));
         container.getChildren().add(new Label("Publisher: " + book.getPublisher()));
-        container.getChildren().add(new Label("Publish Date: " + book.getDate()));
-        container.getChildren().add(new Label("Cover Type: " + book.getCover()));
-        container.getChildren().add(new Label("Language: " + book.getLanguage()));
         container.getChildren().add(new Label("Edition: " + book.getEdition()));
         container.getChildren().add(new Label("Rating: " + book.getRating()));
-        container.getChildren().add(new Button("DENEME"));
+        container.getChildren().add(buttonBox);
         container.setFocusTraversable(true);
         container.setOnMouseClicked(event -> {container.requestFocus();
             event.consume();});
-        container.setStyle("-fx-border-color: gray; -fx-padding: 30; -fx-border-width: 2;");
+        container.setStyle("-fx-border-color: gray; -fx-padding: 15; -fx-border-width: 2;");
         container.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
-                container.setStyle("-fx-border-color: blue; -fx-padding: 30; -fx-border-width: 2;");
+                container.setStyle("-fx-border-color: cornflowerblue; -fx-padding: 15; -fx-border-width: 4;");
             }
             else {
-                container.setStyle("-fx-border-color: gray; -fx-padding: 30; -fx-border-width: 2;");
+                container.setStyle("-fx-border-color: gray; -fx-padding: 15; -fx-border-width: 2;");
             }
         });
         return container;

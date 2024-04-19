@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -71,11 +70,11 @@
                               <Button fx:id="cancelButton" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="30.0" prefWidth="157.0" text="Cancel" HBox.hgrow="ALWAYS" onAction="#onCancelButtonClick"/>
                            </children>
                         </HBox>
-                        <Label fx:id="authorsLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Authors:" HBox.hgrow="ALWAYS" />
+                        <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Authors:" HBox.hgrow="ALWAYS" />
                         <ListView fx:id="authorsList"/>
-                        <Label fx:id="translatorsLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Translators:" HBox.hgrow="ALWAYS" />
+                        <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Translators:" HBox.hgrow="ALWAYS" />
                         <ListView fx:id="translatorsList"/>
-                        <Label fx:id="tagsLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Tags:" HBox.hgrow="ALWAYS" />
+                        <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Tags:" HBox.hgrow="ALWAYS" />
                         <ListView fx:id="tagsList"/>
                      </children>
                   </VBox>
