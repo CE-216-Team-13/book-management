@@ -35,6 +35,7 @@ public class addBookScreen extends Application {
     private TextField TFcover = new TextField();
     private TextField TFisbn = new TextField();
     private TextField TFtags = new TextField();
+    private TextField TFimage = new TextField();
     private DatePicker DPdate = new DatePicker();
     private Spinner<Object> Srating = new Spinner<>(0, 5, 0, 0.1);
     private GridPane GPdetails = new GridPane();
@@ -50,7 +51,7 @@ public class addBookScreen extends Application {
     Label Lisbn = new Label("ISBN");
     Label Lrating = new Label("Rating");
     Label Ltags = new Label("Tags");
-
+    Label Limage = new Label("Image");
     private Book book = new Book();
 
     @Override
@@ -76,6 +77,8 @@ public class addBookScreen extends Application {
         GPdetails.addRow(10, Lisbn, TFisbn);
         GPdetails.addRow(11, Lrating, Srating);
         GPdetails.addRow(12, Ltags, TFtags);
+        GPdetails.addRow(13, Limage, TFimage);
+        TFimage.setEditable(false);
         GPdetails.setHgap(10);
         GPdetails.setVgap(8);
         GPdetails.setAlignment(Pos.CENTER);
@@ -90,8 +93,8 @@ public class addBookScreen extends Application {
         left.setFillWidth(true);
         right.setFillWidth(true);
         GPdetails.getColumnConstraints().addAll(left, right);
-        ArrayList<TextField> textfields = new ArrayList<>(Arrays.asList(TFtitle, TFsubtitle, TFauthors, TFtranslator, TFpublisher, TFedition, TFlanguage, TFpublisher, TFcover, TFisbn, TFtags));
-        ArrayList<Label> labels = new ArrayList<>(Arrays.asList(Ltitle, Lsubtitle, Lauthors, Ltranslator, Lpusblisher, Ledition, Llanguage, Ldate, Lcover, Lisbn, Lrating, Ltags));
+        ArrayList<TextField> textfields = new ArrayList<>(Arrays.asList(TFtitle, TFsubtitle, TFauthors, TFtranslator, TFpublisher, TFedition, TFlanguage, TFpublisher, TFcover, TFisbn, TFtags, TFimage));
+        ArrayList<Label> labels = new ArrayList<>(Arrays.asList(Ltitle, Lsubtitle, Lauthors, Ltranslator, Lpusblisher, Ledition, Llanguage, Ldate, Lcover, Lisbn, Lrating, Ltags, Limage));
         for (TextField tf : textfields) {
             GridPane.setHgrow(tf, Priority.ALWAYS);
             GridPane.setVgrow(tf, Priority.ALWAYS);
@@ -151,7 +154,8 @@ public class addBookScreen extends Application {
 
         File selectedFile = fileChooser.showOpenDialog(stage);
         String a = selectedFile.getAbsolutePath();
-        //System.out.println(a);
+        TFimage.setText(a);
+
     }
 
     public void addBook(Stage stage) {
@@ -216,7 +220,9 @@ public class addBookScreen extends Application {
             }
             book.setTags(a1);
         }
-
+        if (!TFimage.getText().isBlank()) {
+            book.setImage(TFimage.getText());
+        }
         try {
             String filename = generateName();
             book.setLocation(location);
@@ -237,6 +243,7 @@ public class addBookScreen extends Application {
             json.put("image", book.getImage());
             json.put("edition", book.getEdition());
             json.put("rating", book.getRating());
+            json.put("image", book.getImage());
             if (book.getAuthors() != null) {
                 json.put("authors", book.getAuthors());
             }
