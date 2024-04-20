@@ -2,10 +2,18 @@ package app.bookmanagementapp;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.json.JSONObject;
+
+import java.io.File;
 import java.io.FileWriter;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -18,9 +26,13 @@ public class EditController implements Initializable {
     @FXML
     private Button cancelButton;
     @FXML
+    private Button uploadImageButton;
+    @FXML
     private TextField title, subtitle, isbn, rating, authors, translators, tags, publisher, edition, language;
     @FXML
     private RadioButton hardCover, paperback;
+    FileChooser fileChooser;
+    String imagePath;
 
     private ToggleGroup toggleGroup;
     @FXML
@@ -33,6 +45,9 @@ public class EditController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png", "*.jpeg");
+        fileChooser.getExtensionFilters().add(extensionFilter);
 
         datePicker.setEditable(false);
         toggleGroup = new ToggleGroup();
@@ -154,6 +169,14 @@ public class EditController implements Initializable {
                 jsonObject.put("cover", ((RadioButton) toggleGroup.getSelectedToggle()).getText());
                 jsonObject.put("language", language.getText());
                 jsonObject.put("tags", tagsList.getItems());
+                if (book.getImage() != null) {
+                    imagePath = book.getImage();
+                }
+                if (imagePath != null) {
+                    if (!imagePath.isBlank()) {
+                        jsonObject.put("image", imagePath);
+                    }
+                }
                 book = new Book(jsonObject);
 
                 FileWriter writer = new FileWriter(this.location);
@@ -172,6 +195,28 @@ public class EditController implements Initializable {
     protected void onCancelButtonClick() {
         Stage stage = (Stage) cancelButton.getScene().getWindow(); //Gets the window of the scene the button belongs
         stage.close();
+    }
+
+    @FXML
+    protected void onUploadImageButtonClick() {
+        Stage stage = (Stage) uploadImageButton.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
+        if (file != null) {
+            try {
+                Path path = file.toPath();
+                int index = file.getName().lastIndexOf('.');
+                if (index == -1) {
+                    return;
+                }
+                String fileName = System.currentTimeMillis() + file.getName().substring(index);
+                Path destPath = Path.of("BookManagementApp/images", fileName);
+                Files.copy(path, destPath, StandardCopyOption.REPLACE_EXISTING);
+                imagePath = destPath.toUri().toString();
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private boolean isValidTitle() {

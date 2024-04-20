@@ -63,7 +63,7 @@
                   <Separator orientation="VERTICAL" HBox.hgrow="ALWAYS" />
                   <VBox HBox.hgrow="ALWAYS">
                      <children>
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Upload Image" VBox.vgrow="ALWAYS" />
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Upload Image" VBox.vgrow="ALWAYS" fx:id="uploadImageButton" onAction="#onUploadImageButtonClick"/>
                         <HBox prefHeight="32.0" prefWidth="552.0" VBox.vgrow="ALWAYS">
                            <children>
                               <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="30.0" prefWidth="158.0" text="Save" HBox.hgrow="ALWAYS" onAction="#onSaveButtonClick"/>

@@ -38,7 +38,7 @@ public class Library {
             }
         }
         catch (IOException e) {
-            System.out.println("Library Error");
+            e.printStackTrace();
         }
         return library;
     }

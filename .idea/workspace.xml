@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7245de6b-a8f3-4ba0-abd0-4aad1a2cd8b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jsonSchemas.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/.gradle/8.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/.gradle/8.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
@@ -14,21 +13,21 @@
       <change beforePath="$PROJECT_DIR$/BookManagementApp/.gradle/8.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/.gradle/8.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1713179614935.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1713389337405.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1713398679205.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1713398802045.json" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/books/book_1713398802045.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1713398808563.json" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/books/book_1713398808563.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/DeleteController.class" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/DeleteController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/EditController.class" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/EditController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/menuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/menuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1713398428994.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1713398794603.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1713398802045.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1713398808563.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1713398815005.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1713398820982.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1713398827018.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1713484429997.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/addBookScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/addBookScreen.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/build/libs/BookManagementApp-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/libs/BookManagementApp-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/resources/main/app/bookmanagementapp/Edit_Window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/resources/main/app/bookmanagementapp/Edit_Window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/tmp/compileJava/compileTransaction/stash-dir/MenuController.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/tmp/compileJava/compileTransaction/stash-dir/module-info.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/tmp/compileJava/compileTransaction/stash-dir/DeleteController.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/tmp/compileJava/compileTransaction/stash-dir/MenuController.class.uniqueId1" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/DeleteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/DeleteController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/EditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/EditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/Library.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/MenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/resources/app/bookmanagementapp/Edit_Window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/resources/app/bookmanagementapp/Edit_Window.fxml" afterDir="false" />
     </list>
