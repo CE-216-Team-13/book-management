@@ -1,6 +1,8 @@
 package app.bookmanagementapp;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,6 +21,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class EditController implements Initializable {
+    @FXML
+    public Button removeTranslatorButton;
+    @FXML
+    public Button removeTagButton;
+    @FXML
+    private Button removeAuthorButton;
     private String location;
     private Book book;
     @FXML
@@ -169,9 +177,9 @@ public class EditController implements Initializable {
                 jsonObject.put("cover", ((RadioButton) toggleGroup.getSelectedToggle()).getText());
                 jsonObject.put("language", language.getText());
                 jsonObject.put("tags", tagsList.getItems());
-                if (book.getImage() != null) {
-                    imagePath = book.getImage();
-                }
+//                if (book.getImage() != null) {
+//                    imagePath = book.getImage();
+//                }
                 if (imagePath != null) {
                     if (!imagePath.isBlank()) {
                         jsonObject.put("image", imagePath);
@@ -210,13 +218,53 @@ public class EditController implements Initializable {
                 }
                 String fileName = System.currentTimeMillis() + file.getName().substring(index);
                 Path destPath = Path.of("BookManagementApp/images", fileName);
-                Files.copy(path, destPath, StandardCopyOption.REPLACE_EXISTING);
-                imagePath = destPath.toUri().toString();
+                System.out.println("CURSOR WAITS");
+                uploadImageButton.getScene().setCursor(Cursor.WAIT);
+                stage.setOnCloseRequest(event -> event.consume());
+                Task<Void> copyImage = new Task<>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        imagePath = "file:BookManagementApp/images/" + fileName;
+                        Files.copy(path, destPath, StandardCopyOption.REPLACE_EXISTING);
+                        return null;
+                    }
+                };
+                System.out.println("CURSOR DEFAULT");
+                copyImage.setOnSucceeded(e -> {
+                    stage.setOnCloseRequest(null);
+                    uploadImageButton.getScene().setCursor(Cursor.DEFAULT);
+                });
+                copyImage.setOnFailed(e -> {
+                    stage.setOnCloseRequest(null);
+                    uploadImageButton.getScene().setCursor(Cursor.DEFAULT);
+                    Throwable throwable = copyImage.getException();
+                    throwable.printStackTrace();
+                });
+                Thread thread = new Thread(copyImage);
+                thread.start();
             }
             catch (Exception e) {
                 e.printStackTrace();
             }
         }
+    }
+    private void removeFromListView(ListView<String> listView) {
+        if (!listView.getItems().isEmpty() && listView.getSelectionModel().getSelectedItem() != null) {
+            listView.getItems().remove(listView.getSelectionModel().getSelectedItem());
+        }
+    }
+
+    @FXML
+    protected void onRemoveAuthorButtonClick() {
+        removeFromListView(authorsList);
+    }
+    @FXML
+    protected void onRemoveTranslatorButtonClick() {
+        removeFromListView(translatorsList);
+    }
+    @FXML
+    protected void onRemoveTagButtonClick() {
+        removeFromListView(tagsList);
     }
 
     private boolean isValidTitle() {

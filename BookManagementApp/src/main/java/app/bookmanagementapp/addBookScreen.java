@@ -1,8 +1,10 @@
 package app.bookmanagementapp;
 
 import javafx.application.Application;
+import javafx.concurrent.Task;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -16,6 +18,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -24,6 +27,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class addBookScreen extends Application {
+    private String imagePath;
     private String location;
     private TextField TFtitle = new TextField();
     private TextField TFsubtitle = new TextField();
@@ -148,13 +152,43 @@ public class addBookScreen extends Application {
 
     public void addImage(Stage stage) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select Image File");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG", "*.PNG"),
-                new FileChooser.ExtensionFilter("JPEG", "*.JPEG"));
+        File file = fileChooser.showOpenDialog(stage);
+        if (file != null) {
+            try {
+                Path path = file.toPath();
+                int index = file.getName().lastIndexOf('.');
+                if (index == -1) {
+                    return;
+                }
+                String fileName = System.currentTimeMillis() + file.getName().substring(index);
+                Path destPath = Path.of("BookManagementApp/images", fileName);
+                System.out.println("CURSOR WAITS");
+                stage.setOnCloseRequest(event -> event.consume());
+                Task<Void> copyImage = new Task<>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        imagePath = "file:BookManagementApp/images/" + fileName;
+                        Files.copy(path, destPath, StandardCopyOption.REPLACE_EXISTING);
+                        return null;
+                    }
+                };
+                System.out.println("CURSOR DEFAULT");
+                copyImage.setOnSucceeded(e -> {
+                    stage.setOnCloseRequest(null);
+                });
+                copyImage.setOnFailed(e -> {
+                    stage.setOnCloseRequest(null);
+                    Throwable throwable = copyImage.getException();
+                    throwable.printStackTrace();
+                });
+                Thread thread = new Thread(copyImage);
+                thread.start();
 
-        File selectedFile = fileChooser.showOpenDialog(stage);
-        String a = selectedFile.getAbsolutePath();
-        TFimage.setText(a);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
 
     }
@@ -172,7 +206,13 @@ public class addBookScreen extends Application {
         for (int i = 0; i < a1.size(); i++) {
             a1.set(i, a1.get(i).trim());
         }
-        book.setAuthors(a1);
+        if (a1.equals(new ArrayList<String>(List.of("")))) {
+            book.setAuthors(new ArrayList<String>());
+        }
+        else {
+            book.setAuthors(a1);
+        }
+
 
 
         text = TFtranslator.getText();
@@ -180,8 +220,12 @@ public class addBookScreen extends Application {
         for (int i = 0; i < a1.size(); i++) {
             a1.set(i, a1.get(i).trim());
         }
-        book.setTranslators(a1);
-
+        if (a1.equals(new ArrayList<String>(List.of("")))) {
+            book.setTranslators(new ArrayList<String>());
+        }
+        else {
+            book.setTranslators(a1);
+        }
 
         book.setPublisher(String.valueOf(TFpublisher.getText()));
 
@@ -215,10 +259,15 @@ public class addBookScreen extends Application {
         for (int i = 0; i < a1.size(); i++) {
             a1.set(i, a1.get(i).trim());
         }
-        book.setTags(a1);
+        if (a1.equals(new ArrayList<String>(List.of("")))) {
+            book.setTags(new ArrayList<String>());
+        }
+        else {
+            book.setTags(a1);
+        }
 
 
-        book.setImage(TFimage.getText());
+        book.setImage(imagePath);
 
         try {
             String filename = generateName();

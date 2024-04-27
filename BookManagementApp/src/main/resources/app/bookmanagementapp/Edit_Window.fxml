@@ -70,11 +70,20 @@
                               <Button fx:id="cancelButton" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="30.0" prefWidth="157.0" text="Cancel" HBox.hgrow="ALWAYS" onAction="#onCancelButtonClick"/>
                            </children>
                         </HBox>
+                        <HBox>
                         <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Authors:" HBox.hgrow="ALWAYS" />
+                        <Button text="Remove Selected" fx:id="removeAuthorButton" onAction="#onRemoveAuthorButtonClick"/>
+                        </HBox>
                         <ListView fx:id="authorsList"/>
+                        <HBox>
                         <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Translators:" HBox.hgrow="ALWAYS" />
+                        <Button text="Remove Selected" fx:id="removeTranslatorButton" onAction="#onRemoveTranslatorButtonClick"/>
+                        </HBox>
                         <ListView fx:id="translatorsList"/>
+                        <HBox>
                         <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Tags:" HBox.hgrow="ALWAYS" />
+                        <Button text="Remove Selected" fx:id="removeTagButton" onAction="#onRemoveTagButtonClick"/>
+                        </HBox>
                         <ListView fx:id="tagsList"/>
                      </children>
                   </VBox>
