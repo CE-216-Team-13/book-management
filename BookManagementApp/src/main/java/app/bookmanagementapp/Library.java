@@ -15,6 +15,7 @@ import java.util.stream.Stream;
 public class Library {
     private static Library library;
     private ArrayList<Book> books;
+    private ArrayList<String> tags;
     private Path directory;
     private JsonController controller;
 
@@ -27,6 +28,7 @@ public class Library {
         library.setDirectory(Paths.get("BookManagementApp/books"));
         ArrayList<JSONObject> jsonObjects = new ArrayList<>();
         library.books = new ArrayList<Book>();
+        library.tags = new ArrayList<String>();
 
         try (Stream<Path> stream = Files.walk(library.directory)){
             List<Path> files = stream.filter(Files::isRegularFile).toList();
@@ -35,6 +37,11 @@ public class Library {
                 Book book = new Book(jsonObject);
                 book.setLocation(path.toString());
                 library.books.add(book);
+                for (String tag: book.getTags()) {
+                    if (!library.tags.contains(tag)) {
+                        library.tags.add(tag);
+                    }
+                }
             }
         }
         catch (IOException e) {
@@ -67,6 +74,10 @@ public class Library {
         this.controller = controller;
     }
 
+    public ArrayList<String> getTags() {
+        return tags;
+    }
+
     public ArrayList<Book> search(String str) {
         ArrayList<Book> results = new ArrayList<>();
         for (Book book: books) {
@@ -83,6 +94,16 @@ public class Library {
                     book.getTranslators().stream().anyMatch(translator -> translator.toLowerCase().contains(str.toLowerCase())) ||
                     book.getTags().stream().anyMatch(tag -> tag.toLowerCase().contains(str.toLowerCase()))
             ) {
+                results.add(book);
+            }
+        }
+        return results;
+    }
+
+    public ArrayList<Book> searchByTags(ArrayList<String> tags) {
+        ArrayList<Book> results = new ArrayList<>();
+        for (Book book: books) {
+            if (book.getTags().stream().anyMatch(tags::contains)) {
                 results.add(book);
             }
         }

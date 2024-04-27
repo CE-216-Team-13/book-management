@@ -33,8 +33,6 @@
             <Button mnemonicParsing="false" text="Search" HBox.hgrow="ALWAYS" onAction="#onSearchButtonClick" fx:id="searchButton"/>
             <MenuButton mnemonicParsing="false" text="Filter by Tags" HBox.hgrow="ALWAYS">
               <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
               </items>
             </MenuButton>
          </children>
