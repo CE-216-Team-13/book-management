@@ -156,42 +156,41 @@ public class addBookScreen extends Application {
         String a = selectedFile.getAbsolutePath();
         TFimage.setText(a);
 
+
     }
 
     public void addBook(Stage stage) {
-        if (!TFtitle.getText().isBlank()) {
-            book.setTitle(String.valueOf(TFtitle.getText()));
-        }
-        if (!TFsubtitle.getText().isBlank()) {
-            book.setSubtitle(String.valueOf(TFsubtitle.getText()));
-        }
-        if (!TFauthors.getText().isBlank()) {
-            String text = TFauthors.getText();
-            ArrayList<String> a1 = new ArrayList<>(List.of(text.split(";")));
-            for (int i = 0; i < a1.size(); i++) {
-                a1.set(i, a1.get(i).trim());
-            }
-            book.setAuthors(a1);
-        }
-        if (!TFtranslator.getText().isBlank()) {
-            String text = TFtranslator.getText();
-            ArrayList<String> a1 = new ArrayList<>(List.of(text.split(";")));
-            for (int i = 0; i < a1.size(); i++) {
-                a1.set(i, a1.get(i).trim());
-            }
-            book.setTranslators(a1);
-        }
-        if (!TFpublisher.getText().isBlank()) {
-            book.setPublisher(String.valueOf(TFpublisher.getText()));
-        }
 
-        if (!String.valueOf(TFedition.getText()).isBlank()) {
-            book.setEdition(String.valueOf(TFedition.getText()));
-        }
+        book.setTitle(String.valueOf(TFtitle.getText()));
 
-        if (!TFlanguage.getText().isBlank()) {
-            book.setLanguage(String.valueOf(TFlanguage.getText()));
+
+        book.setSubtitle(String.valueOf(TFsubtitle.getText()));
+
+
+        String text = TFauthors.getText();
+        ArrayList<String> a1 = new ArrayList<>(List.of(text.split(";")));
+        for (int i = 0; i < a1.size(); i++) {
+            a1.set(i, a1.get(i).trim());
         }
+        book.setAuthors(a1);
+
+
+        text = TFtranslator.getText();
+        a1 = new ArrayList<>(List.of(text.split(";")));
+        for (int i = 0; i < a1.size(); i++) {
+            a1.set(i, a1.get(i).trim());
+        }
+        book.setTranslators(a1);
+
+
+        book.setPublisher(String.valueOf(TFpublisher.getText()));
+
+
+        book.setEdition(String.valueOf(TFedition.getText()));
+
+
+        book.setLanguage(String.valueOf(TFlanguage.getText()));
+
 
         if (DPdate.getValue() != null) {
             try {
@@ -202,27 +201,25 @@ public class addBookScreen extends Application {
         } else {
             book.setDate("");
         }
-        if (!TFcover.getText().isBlank()) {
-            book.setCover(String.valueOf(TFcover.getText()));
-        }
 
-        if (!TFisbn.getText().isBlank()) {
-            book.setIsbn(String.valueOf(TFisbn.getText()));
-        }
+        book.setCover(String.valueOf(TFcover.getText()));
+
+
+        book.setIsbn(String.valueOf(TFisbn.getText()));
 
 
         book.setRating(Float.parseFloat(Srating.getValue().toString()));
-        if (!TFtags.getText().isBlank()) {
-            String text = TFtags.getText();
-            ArrayList<String> a1 = new ArrayList<>(List.of(text.split(";")));
-            for (int i = 0; i < a1.size(); i++) {
-                a1.set(i, a1.get(i).trim());
-            }
-            book.setTags(a1);
+
+        text = TFtags.getText();
+        a1 = new ArrayList<>(List.of(text.split(";")));
+        for (int i = 0; i < a1.size(); i++) {
+            a1.set(i, a1.get(i).trim());
         }
-        if (!TFimage.getText().isBlank()) {
-            book.setImage(TFimage.getText());
-        }
+        book.setTags(a1);
+
+
+        book.setImage(TFimage.getText());
+
         try {
             String filename = generateName();
             book.setLocation(location);
@@ -244,15 +241,15 @@ public class addBookScreen extends Application {
             json.put("edition", book.getEdition());
             json.put("rating", book.getRating());
             json.put("image", book.getImage());
-            if (book.getAuthors() != null) {
-                json.put("authors", book.getAuthors());
-            }
-            if (book.getTranslators() != null) {
-                json.put("translators", book.getTranslators());
-            }
-            if (book.getTags() != null) {
-                json.put("tags", book.getTags());
-            }
+
+            json.put("authors", book.getAuthors());
+
+
+            json.put("translators", book.getTranslators());
+
+
+            json.put("tags", book.getTags());
+
             FileWriter fw = new FileWriter(directory.toString());
             fw.write(json.toString());
             fw.close();
