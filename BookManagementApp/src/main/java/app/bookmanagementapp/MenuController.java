@@ -1,6 +1,7 @@
 package app.bookmanagementapp;
 
 import javafx.event.Event;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -33,6 +34,8 @@ public class MenuController implements Initializable {
     @FXML
     private VBox vBox;
     @FXML
+    private MenuButton filterbytags;
+    @FXML
     private MenuItem importMenu;
     private ImportBookScreen importscreen;
     private addBookScreen addbook;
@@ -40,6 +43,55 @@ public class MenuController implements Initializable {
     private ArrayList<Book> results;
 
     private ScrollPane scrollPane;
+
+    @FXML
+    void clickfilterbytags(ActionEvent event) {
+
+        // Get the list of all available tags
+        ArrayList<String> allTags = Library.getInstance().getTags();
+
+        // Create a dialog for selecting tags
+        Dialog<ArrayList<String>> dialog = new Dialog<>();
+        dialog.setTitle("Filter by Tags");
+        dialog.setHeaderText("Select tags to filter books");
+
+        // Create a ListView to display available tags
+        ListView<String> tagListView = new ListView<>();
+        tagListView.getItems().addAll(allTags);
+        tagListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        // Add the ListView to the dialog
+        dialog.getDialogPane().setContent(tagListView);
+
+        // Add buttons for confirmation and cancellation
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        // Handle the OK button click event
+        dialog.setResultConverter(buttonType -> {
+            if (buttonType == ButtonType.OK) {
+                // Return the list of selected tags when OK is clicked
+                return new ArrayList<>(tagListView.getSelectionModel().getSelectedItems());
+            }
+            return null; // Return null when Cancel is clicked
+        });
+
+        // Show the dialog and wait for user input
+        //The Optional class in Java is a container object that may or may not contain a non-null value. It is used to represent a value that may or may not be present.
+        Optional<ArrayList<String>> result = dialog.showAndWait();
+
+        // Check if the user selected any tags
+        if (result.isPresent()) {
+            // Get the selected tags
+            ArrayList<String> selectedTags = result.get();
+
+            // Filter books based on selected tags
+            ArrayList<Book> filteredBooks = Library.getInstance().searchByTags(selectedTags);
+
+            // Display the filtered books
+            displayBooks(filteredBooks, 4);
+        }
+
+    }
 
     @FXML
     protected void onSearchButtonClick() {
