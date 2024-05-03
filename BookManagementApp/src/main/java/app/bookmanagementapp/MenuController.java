@@ -1,7 +1,10 @@
 package app.bookmanagementapp;
 
-import javafx.event.Event;
+import javafx.application.Platform;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,17 +27,19 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MenuController implements Initializable {
     @FXML
     private Button searchButton;
     @FXML
+    private MenuButton filterbytags;
+
+    @FXML
     private TextField searchBar;
     @FXML
     private VBox vBox;
-    @FXML
-    private MenuButton filterbytags;
     @FXML
     private MenuItem importMenu;
     private ImportBookScreen importscreen;
@@ -42,64 +47,70 @@ public class MenuController implements Initializable {
     private GridPane gridPane;
     private ArrayList<Book> results;
 
+    private ArrayList<String> selectedTags = new ArrayList<>();
+
     private ScrollPane scrollPane;
+
+    private ListView<String> tagsList;
+    private EditController editController;
+
+
+    @FXML
+    private MenuItem closemenuitem;
+
+
+
+    @FXML
+    void clickclose(ActionEvent event) {
+        Platform.exit();
+    }
+
 
     @FXML
     void clickfilterbytags(ActionEvent event) {
-
-        // Get the list of all available tags
         ArrayList<String> allTags = Library.getInstance().getTags();
 
-        // Create a dialog for selecting tags
         Dialog<ArrayList<String>> dialog = new Dialog<>();
         dialog.setTitle("Filter by Tags");
         dialog.setHeaderText("Select tags to filter books");
 
-        // Create a ListView to display available tags
-        ListView<String> tagListView = new ListView<>();
-        tagListView.getItems().addAll(allTags);
-        tagListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        VBox vbox = new VBox();
 
-        // Add the ListView to the dialog
-        dialog.getDialogPane().setContent(tagListView);
+        ArrayList<CheckBox> checkBoxes = new ArrayList<>();
 
-        // Add buttons for confirmation and cancellation
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
-
-        // Handle the OK button click event
-        dialog.setResultConverter(buttonType -> {
-            if (buttonType == ButtonType.OK) {
-                // Return the list of selected tags when OK is clicked
-                return new ArrayList<>(tagListView.getSelectionModel().getSelectedItems());
-            }
-            return null; // Return null when Cancel is clicked
-        });
-
-        // Show the dialog and wait for user input
-        //The Optional class in Java is a container object that may or may not contain a non-null value. It is used to represent a value that may or may not be present.
-        Optional<ArrayList<String>> result = dialog.showAndWait();
-
-        // Check if the user selected any tags
-        if (result.isPresent()) {
-            // Get the selected tags
-            ArrayList<String> selectedTags = result.get();
-
-            // Filter books based on selected tags
-            ArrayList<Book> filteredBooks = Library.getInstance().searchByTags(selectedTags);
-
-            // Display the filtered books
-            displayBooks(filteredBooks, 4);
+        for (String tag : allTags) {
+            CheckBox checkBox = new CheckBox(tag);
+            checkBoxes.add(checkBox);
+            vbox.getChildren().add(checkBox);
         }
 
+        dialog.getDialogPane().setContent(vbox);
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        Optional<ArrayList<String>> result = dialog.showAndWait();
+
+        if (result.isPresent()) {
+            ArrayList<String> selectedTags = new ArrayList<>();
+            for (CheckBox checkBox : checkBoxes) {
+                if (checkBox.isSelected()) {
+                    selectedTags.add(checkBox.getText());
+                }
+            }
+
+            ArrayList<Book> filteredBooks = Library.getInstance().searchByTags(selectedTags);
+            displayBooks(filteredBooks, 4);
+        }
     }
+
 
     @FXML
     protected void onSearchButtonClick() {
-        if (!searchBar.getText().isBlank()) {
-            setResults();
-            if (results != null) {
-                displayBooks(results, 4);
-            }
+        String searchText = searchBar.getText();
+        if (!searchText.isBlank()) {
+            results = Library.getInstance().search(searchText);
+            displayBooks(results, 4);
+        } else {
+            // Handle empty search case
         }
     }
 
@@ -112,7 +123,7 @@ public class MenuController implements Initializable {
     protected void onCreateButtonClick() throws IOException {
         addbook = new addBookScreen();
         addbook.start(new Stage());
-}
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         gridPane = new GridPane();
@@ -133,9 +144,45 @@ public class MenuController implements Initializable {
             if (results != null) {
                 displayBooks(results, maxColumns);
             }
+
+
         });
 
+
+
+        populateFilterByTagsMenu();
+
     }
+
+    private void populateFilterByTagsMenu() {
+        ArrayList<String> allTags = Library.getInstance().getTags();
+        for (String tag : allTags) {
+            CheckMenuItem menuItem = new CheckMenuItem(tag);
+            menuItem.setOnAction(event -> {
+                if (menuItem.isSelected()) {
+                    selectedTags.add(tag);
+                } else {
+                    selectedTags.remove(tag);
+                }
+                updateBookDisplay();
+            });
+            filterbytags.getItems().add(menuItem);
+        }
+    }
+
+    private void updateBookDisplay() {
+        if (!searchBar.getText().isBlank()) {
+            setResults();
+            if (results != null) {
+                // Filter books based on selected tags
+                ArrayList<Book> filteredBooks = Library.getInstance().searchByTags(selectedTags);
+                displayBooks(filteredBooks, 4);
+            }
+        }
+    }
+
+
+
 
     public void displayBooks(ArrayList<Book> results, int maxColumns) {
         gridPane.getChildren().clear();
@@ -143,7 +190,8 @@ public class MenuController implements Initializable {
         int column = 0;
 
         for (Book book: results) {
-            gridPane.add(createBookBox(book), column, row);
+            VBox bookBox = createBookBox(book);
+            gridPane.add(bookBox, column, row);
             column++;
             if (column >= maxColumns) {
                 column = 0;
@@ -152,7 +200,12 @@ public class MenuController implements Initializable {
         }
     }
     public void setResults() {
-        results = Library.getInstance().search(searchBar.getText());
+        String searchText = searchBar.getText();
+        if (!searchText.isBlank()) {
+            results = Library.getInstance().search(searchText);
+        } else {
+            results = new ArrayList<>(); // clear the results if the search text is blank
+        }
     }
     public VBox createBookBox(Book book) {
         HBox buttonBox = new HBox();
