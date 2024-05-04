@@ -9,33 +9,34 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="800.0" maxWidth="1070.0" minHeight="800.0" minWidth="1070.0" prefHeight="800.0" prefWidth="1070.0" xmlns:fx="http://javafx.com/fxml" fx:controller="app.bookmanagementapp.MenuController" fx:id="vBox">
-   <children>
-      <MenuBar>
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem mnemonicParsing="false" text="Import" onAction="#onImportButtonClick" fx:id="importMenu"/>
-                <MenuItem mnemonicParsing="false" text="Create" onAction="#onCreateButtonClick"/>
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Manual" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <HBox prefHeight="50.0" prefWidth="200.0">
-         <children>
-            <TextField HBox.hgrow="ALWAYS" fx:id="searchBar"/>
-            <Button mnemonicParsing="false" text="Search" HBox.hgrow="ALWAYS" onAction="#onSearchButtonClick" fx:id="searchButton"/>
-            <MenuButton mnemonicParsing="false" text="Filter by Tags" HBox.hgrow="ALWAYS">
-              <items>
-              </items>
-            </MenuButton>
-         </children>
-      </HBox>
-   </children>
+<VBox fx:id="vBox" maxHeight="800.0" maxWidth="1070.0" minHeight="800.0" minWidth="1070.0" prefHeight="800.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.bookmanagementapp.MenuController">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem fx:id="closemenuitem" mnemonicParsing="false" onAction="#clickclose" text="Close" />
+                        <MenuItem fx:id="importMenu" mnemonicParsing="false" onAction="#onImportButtonClick" text="Import" />
+                        <MenuItem mnemonicParsing="false" onAction="#onCreateButtonClick" text="Create" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Manual" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <HBox prefHeight="50.0" prefWidth="200.0">
+            <children>
+                <TextField fx:id="searchBar" HBox.hgrow="ALWAYS" />
+                <Button fx:id="searchButton" mnemonicParsing="false" onAction="#onSearchButtonClick" text="Search" HBox.hgrow="ALWAYS" />
+                <MenuButton fx:id="filterbytags" mnemonicParsing="false" onAction="#clickfilterbytags" text="Filter by Tags" HBox.hgrow="ALWAYS">
+                    <items>
+                        <!-- CheckMenuItems will be added dynamically in the MenuController class -->
+                    </items>
+                </MenuButton>
+            </children>
+        </HBox>
+    </children>
 </VBox>

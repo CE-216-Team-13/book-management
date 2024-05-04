@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="vBox" maxHeight="800.0" maxWidth="1070.0" minHeight="800.0" minWidth="1070.0" prefHeight="800.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.bookmanagementapp.MenuController">
+<VBox fx:id="vBox" maxHeight="800.0" maxWidth="1070.0" minHeight="800.0" minWidth="1070.0" prefHeight="800.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.bookmanagementapp.MenuController">
     <children>
         <MenuBar>
             <menus>

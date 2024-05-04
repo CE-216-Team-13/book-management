@@ -6,10 +6,13 @@
     "edition": "",
     "language": "",
     "title": "Clean Code",
-    "tags": [],
+    "tags": ["computer science"],
     "cover": "Hard Cover",
     "translators": [],
     "subtitle": "",
     "publisher": "",
-    "authors": ["Robert C. Martin"]
+    "authors": [
+        "Robert C. Martin",
+        "asdasdasdasd"
+    ]
 }

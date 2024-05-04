@@ -13,21 +13,16 @@
       <change beforePath="$PROJECT_DIR$/BookManagementApp/.gradle/8.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/.gradle/8.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1713559266688.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1714228884624.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/EditController.class" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/EditController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/addBookScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/addBookScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1714248421575.json" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/books/book_1714248421575.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1714248452016.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1714248839246.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/books/book_1714248953527.json" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/books/book_1714248953527.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/menuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/classes/java/main/app/bookmanagementapp/menuController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/build/libs/BookManagementApp-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/libs/BookManagementApp-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/resources/main/app/bookmanagementapp/Edit_Window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/resources/main/app/bookmanagementapp/Edit_Window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/tmp/compileJava/compileTransaction/stash-dir/Main.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/tmp/compileJava/compileTransaction/stash-dir/module-info.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/build/resources/main/app/bookmanagementapp/Menu_Window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/resources/main/app/bookmanagementapp/Menu_Window.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/images/1713560500586.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/EditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/EditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/addBookScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/addBookScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/resources/app/bookmanagementapp/Edit_Window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/resources/app/bookmanagementapp/Edit_Window.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/resources/app/bookmanagementapp/Menu_Window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/resources/app/bookmanagementapp/Menu_Window.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -39,6 +39,7 @@ public class EditController implements Initializable {
     private TextField title, subtitle, isbn, rating, authors, translators, tags, publisher, edition, language;
     @FXML
     private RadioButton hardCover, paperback;
+    private boolean imageChanged;
     FileChooser fileChooser;
     String imagePath;
 
@@ -63,7 +64,8 @@ public class EditController implements Initializable {
         paperback.setToggleGroup(toggleGroup);
         hardCover.setSelected(true);
 
-
+        imageChanged = false;
+        imagePath = book.getImage();
         title.setText(book.getTitle());
         subtitle.setText(book.getSubtitle());
         isbn.setText(book.getIsbn());
@@ -226,6 +228,7 @@ public class EditController implements Initializable {
                     protected Void call() throws Exception {
                         imagePath = "file:BookManagementApp/images/" + fileName;
                         Files.copy(path, destPath, StandardCopyOption.REPLACE_EXISTING);
+                        imageChanged = true;
                         return null;
                     }
                 };
