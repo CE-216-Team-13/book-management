@@ -90,7 +90,7 @@ public class MenuController implements Initializable {
         Optional<ArrayList<String>> result = dialog.showAndWait();
 
         if (result.isPresent()) {
-            ArrayList<String> selectedTags = new ArrayList<>();
+            selectedTags.clear(); // Clear the selectedTags list
             for (CheckBox checkBox : checkBoxes) {
                 if (checkBox.isSelected()) {
                     selectedTags.add(checkBox.getText());
@@ -104,15 +104,22 @@ public class MenuController implements Initializable {
 
 
     @FXML
-    protected void onSearchButtonClick() {
-        String searchText = searchBar.getText();
-        if (!searchText.isBlank()) {
-            results = Library.getInstance().search(searchText);
-            displayBooks(results, 4);
-        } else {
-            // Handle empty search case
+protected void onSearchButtonClick() {
+    String searchText = searchBar.getText();
+    if (!searchText.isBlank()) {
+        results = Library.getInstance().search(searchText);
+        // Filter books based on selected tags
+        ArrayList<Book> filteredBooks = new ArrayList<>();
+        for (Book book : results) {
+            if (book.getTags().containsAll(selectedTags)) {
+                filteredBooks.add(book);
+            }
         }
+        displayBooks(filteredBooks, 4);
+    } else {
+        // Handle empty search case
     }
+}
 
     @FXML
     protected void onImportButtonClick() throws Exception {
@@ -171,13 +178,11 @@ public class MenuController implements Initializable {
     }
 
     private void updateBookDisplay() {
-        if (!searchBar.getText().isBlank()) {
-            setResults();
-            if (results != null) {
-                // Filter books based on selected tags
-                ArrayList<Book> filteredBooks = Library.getInstance().searchByTags(selectedTags);
-                displayBooks(filteredBooks, 4);
-            }
+        setResults(); // Call setResults method before updateBookDisplay
+        if (results != null) {
+            // Filter books based on selected tags
+            ArrayList<Book> filteredBooks = Library.getInstance().searchByTags(selectedTags);
+            displayBooks(filteredBooks, 4);
         }
     }
 
@@ -270,6 +275,11 @@ public class MenuController implements Initializable {
                 container.getChildren().add(imageView);
                 imageView.setPreserveRatio(true);
             }
+        }
+        else {
+            // Add a default image or placeholder text when the book's image is null or blank
+            Label placeholder = new Label("No image available");
+            container.getChildren().add(placeholder);
         }
         container.getChildren().add(new Label("Title: " + book.getTitle()));
         container.getChildren().add(new Label("Subtitle: " + book.getSubtitle()));
