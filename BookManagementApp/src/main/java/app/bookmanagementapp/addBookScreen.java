@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.concurrent.Task;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -23,7 +22,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 public class addBookScreen extends Application {
@@ -119,19 +117,19 @@ public class addBookScreen extends Application {
         //    HBbuttons.setFillHeight(true);
         main.setFillWidth(true);
         HBox.setHgrow(GPdetails, Priority.ALWAYS);
-        Button Bcancel = new Button("Cancel");
-        Bcancel.setOnAction(e -> stage.close());
-        Button Bok = new Button("OK");
-        Bok.setOnAction(e -> addBook(stage));
-        Button Bimage = new Button("Image ");
-        Bimage.setOnAction(e -> addImage(stage));
-        Bcancel.minWidthProperty().bind(stage.widthProperty().divide(3));
-        Bok.minWidthProperty().bind(stage.widthProperty().divide(3));
-        Bimage.minWidthProperty().bind(stage.widthProperty().divide(3));
-        Bcancel.minHeightProperty().bind(HBbuttons.heightProperty());
-        Bok.minHeightProperty().bind(HBbuttons.heightProperty());
-        Bimage.minHeightProperty().bind(HBbuttons.heightProperty());
-        HBbuttons.getChildren().addAll(Bcancel, Bok, Bimage);
+        Button ButtonCancel = new Button("Cancel");
+        ButtonCancel.setOnAction(e -> stage.close());
+        Button ButtonOK = new Button("OK");
+        ButtonOK.setOnAction(e -> addBook(stage));
+        Button ButtonImage = new Button("Image ");
+        ButtonImage.setOnAction(e -> addImage(stage));
+        ButtonCancel.minWidthProperty().bind(stage.widthProperty().divide(3));
+        ButtonOK.minWidthProperty().bind(stage.widthProperty().divide(3));
+        ButtonImage.minWidthProperty().bind(stage.widthProperty().divide(3));
+        ButtonCancel.minHeightProperty().bind(HBbuttons.heightProperty());
+        ButtonOK.minHeightProperty().bind(HBbuttons.heightProperty());
+        ButtonImage.minHeightProperty().bind(HBbuttons.heightProperty());
+        HBbuttons.getChildren().addAll(ButtonCancel, ButtonOK, ButtonImage);
         //   HBox.setHgrow(HBbuttons, Priority.ALWAYS);
         HBox.setHgrow(main, Priority.ALWAYS);
         HBbuttons.setAlignment(Pos.BOTTOM_CENTER);
@@ -184,8 +182,7 @@ public class addBookScreen extends Application {
                 Thread thread = new Thread(copyImage);
                 thread.start();
 
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -208,11 +205,9 @@ public class addBookScreen extends Application {
         }
         if (a1.equals(new ArrayList<String>(List.of("")))) {
             book.setAuthors(new ArrayList<String>());
-        }
-        else {
+        } else {
             book.setAuthors(a1);
         }
-
 
 
         text = TFtranslator.getText();
@@ -222,8 +217,7 @@ public class addBookScreen extends Application {
         }
         if (a1.equals(new ArrayList<String>(List.of("")))) {
             book.setTranslators(new ArrayList<String>());
-        }
-        else {
+        } else {
             book.setTranslators(a1);
         }
 
@@ -261,8 +255,7 @@ public class addBookScreen extends Application {
         }
         if (a1.equals(new ArrayList<String>(List.of("")))) {
             book.setTags(new ArrayList<String>());
-        }
-        else {
+        } else {
             book.setTags(a1);
         }
 

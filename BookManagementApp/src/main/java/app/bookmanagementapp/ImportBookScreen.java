@@ -1,14 +1,15 @@
 package app.bookmanagementapp;
 
+import javafx.event.ActionEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -49,7 +50,11 @@ public class ImportBookScreen {
                         d.mkdir();
                     }
                     Path directory = Paths.get("BookManagementApp\\books", filename);
-                    Files.createFile(directory);
+                    try {
+                        Files.createFile(directory);
+                    } catch (FileAlreadyExistsException e) {
+
+                    }
                     JSONObject json = new JSONObject();
                     json.put("title", book.getTitle());
                     json.put("subtitle", book.getSubtitle());
@@ -76,4 +81,5 @@ public class ImportBookScreen {
         }
         stage.close();
     }
+
 }
