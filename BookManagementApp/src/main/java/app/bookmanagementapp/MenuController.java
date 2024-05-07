@@ -51,10 +51,23 @@ public class MenuController implements Initializable {
     @FXML
     private MenuItem closemenuitem;
 
+    @FXML
+    private MenuItem helpmenuıtem;
+
 
     @FXML
     void clickclose(ActionEvent event) {
         Platform.exit();
+    }
+
+    @FXML
+    void clicktohelp(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Help");
+        alert.setHeaderText(null);
+        alert.setContentText("Here is the help text...");
+
+        alert.showAndWait();
     }
 
 
