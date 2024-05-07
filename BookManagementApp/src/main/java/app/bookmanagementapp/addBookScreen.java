@@ -60,7 +60,7 @@ public class addBookScreen extends Application {
     public void start(Stage stage) throws IOException {
         DPdate.setEditable(false);
         stage.setMinHeight(510);
-        stage.setMinWidth(310);
+        stage.setMinWidth(400);
         stage.setResizable(true);
         VBox main = new VBox();
         Scene scene = new Scene(main, 400, 400);
