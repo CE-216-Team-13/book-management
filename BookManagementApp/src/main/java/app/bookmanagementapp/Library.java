@@ -2,14 +2,13 @@ package app.bookmanagementapp;
 
 import org.json.JSONObject;
 
-import java.io.FileReader;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Library {
@@ -17,7 +16,7 @@ public class Library {
     private ArrayList<Book> books;
     private ArrayList<String> tags;
     private Path directory;
-    private JsonController controller;
+
 
     private Library() {}
 
@@ -64,14 +63,6 @@ public class Library {
 
     public void setDirectory(Path directory) {
         this.directory = directory;
-    }
-
-    public JsonController getController() {
-        return controller;
-    }
-
-    public void setController(JsonController controller) {
-        this.controller = controller;
     }
 
     public ArrayList<String> getTags() {

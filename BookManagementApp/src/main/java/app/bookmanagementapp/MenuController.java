@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,15 +14,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.json.JSONObject;
-import org.json.JSONTokener;
-
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -35,7 +27,8 @@ public class MenuController implements Initializable {
     private Button searchButton;
     @FXML
     private MenuButton filterbytags;
-
+    @FXML
+    private Button helpButton;
     @FXML
     private TextField searchBar;
     @FXML
@@ -57,7 +50,6 @@ public class MenuController implements Initializable {
 
     @FXML
     private MenuItem closemenuitem;
-
 
 
     @FXML
@@ -104,33 +96,40 @@ public class MenuController implements Initializable {
 
 
     @FXML
-protected void onSearchButtonClick() {
-    String searchText = searchBar.getText();
-    if (!searchText.isBlank()) {
-        results = Library.getInstance().search(searchText);
-        // Filter books based on selected tags
-        ArrayList<Book> filteredBooks = new ArrayList<>();
-        for (Book book : results) {
-            if (book.getTags().containsAll(selectedTags)) {
-                filteredBooks.add(book);
+    protected void onSearchButtonClick() {
+        String searchText = searchBar.getText();
+        if (!searchText.isBlank()) {
+            results = Library.getInstance().search(searchText);
+            // Filter books based on selected tags
+            ArrayList<Book> filteredBooks = new ArrayList<>();
+            for (Book book : results) {
+                if (book.getTags().containsAll(selectedTags)) {
+                    filteredBooks.add(book);
+                }
             }
+            displayBooks(filteredBooks, 4);
+        } else {
+            // Handle empty search case
         }
-        displayBooks(filteredBooks, 4);
-    } else {
-        // Handle empty search case
     }
-}
+
+    @FXML
+    protected void onHelpButtonClick() {
+
+    }
 
     @FXML
     protected void onImportButtonClick() throws Exception {
         importscreen = new ImportBookScreen();
         importscreen.start(new Stage());
     }
+
     @FXML
     protected void onCreateButtonClick() throws IOException {
         addbook = new addBookScreen();
         addbook.start(new Stage());
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         gridPane = new GridPane();
@@ -154,7 +153,6 @@ protected void onSearchButtonClick() {
 
 
         });
-
 
 
         populateFilterByTagsMenu();
@@ -187,14 +185,12 @@ protected void onSearchButtonClick() {
     }
 
 
-
-
     public void displayBooks(ArrayList<Book> results, int maxColumns) {
         gridPane.getChildren().clear();
         int row = 0;
         int column = 0;
 
-        for (Book book: results) {
+        for (Book book : results) {
             VBox bookBox = createBookBox(book);
             gridPane.add(bookBox, column, row);
             column++;
@@ -204,6 +200,7 @@ protected void onSearchButtonClick() {
             }
         }
     }
+
     public void setResults() {
         String searchText = searchBar.getText();
         if (!searchText.isBlank()) {
@@ -212,6 +209,7 @@ protected void onSearchButtonClick() {
             results = new ArrayList<>(); // clear the results if the search text is blank
         }
     }
+
     public VBox createBookBox(Book book) {
         HBox buttonBox = new HBox();
         Button editButton = new Button("Edit");
@@ -233,8 +231,7 @@ protected void onSearchButtonClick() {
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.show();
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         });
@@ -247,8 +244,7 @@ protected void onSearchButtonClick() {
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.show();
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         });
@@ -275,8 +271,7 @@ protected void onSearchButtonClick() {
                 container.getChildren().add(imageView);
                 imageView.setPreserveRatio(true);
             }
-        }
-        else {
+        } else {
             // Add a default image or placeholder text when the book's image is null or blank
             Label placeholder = new Label("No image available");
             container.getChildren().add(placeholder);
@@ -288,14 +283,15 @@ protected void onSearchButtonClick() {
         container.getChildren().add(new Label("Rating: " + book.getRating()));
         container.getChildren().add(buttonBox);
         container.setFocusTraversable(true);
-        container.setOnMouseClicked(event -> {container.requestFocus();
-            event.consume();});
+        container.setOnMouseClicked(event -> {
+            container.requestFocus();
+            event.consume();
+        });
         container.setStyle("-fx-border-color: gray; -fx-padding: 15; -fx-border-width: 2;");
         container.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 container.setStyle("-fx-border-color: cornflowerblue; -fx-padding: 15; -fx-border-width: 4;");
-            }
-            else {
+            } else {
                 container.setStyle("-fx-border-color: gray; -fx-padding: 15; -fx-border-width: 2;");
             }
         });

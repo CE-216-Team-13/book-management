@@ -1,6 +1,5 @@
 package app.bookmanagementapp;
 
-import javafx.event.ActionEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.json.JSONObject;

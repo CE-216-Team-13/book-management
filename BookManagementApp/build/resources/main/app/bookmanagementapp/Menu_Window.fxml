@@ -31,6 +31,7 @@
             <children>
                 <TextField fx:id="searchBar" HBox.hgrow="ALWAYS" />
                 <Button fx:id="searchButton" mnemonicParsing="false" onAction="#onSearchButtonClick" text="Search" HBox.hgrow="ALWAYS" />
+                <Button fx:id="helpButton" mnemonicParsing="false" onAction="#onHelpButtonClick" text="Search" HBox.hgrow="ALWAYS" />
                 <MenuButton fx:id="filterbytags" mnemonicParsing="false" onAction="#clickfilterbytags" text="Filter by Tags" HBox.hgrow="ALWAYS">
                     <items>
                         <!-- CheckMenuItems will be added dynamically in the MenuController class -->
