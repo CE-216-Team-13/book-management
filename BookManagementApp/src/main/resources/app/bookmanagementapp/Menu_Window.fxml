@@ -23,7 +23,7 @@
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
                   <MenuItem fx:id="helpmenuıtem" mnemonicParsing="false" onAction="#clicktohelp" text="help" />
-                        <MenuItem mnemonicParsing="false" text="Manual" />
+
                     </items>
                 </Menu>
             </menus>

@@ -65,7 +65,39 @@ public class MenuController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Help");
         alert.setHeaderText(null);
-        alert.setContentText("Here is the help text...");
+        alert.setContentText("""
+                Books will not be visible until searched or filtered by a tag.
+                
+                File Button:
+                  Opens "Create" for creating books.
+                  Opens "Import" for importing books.
+                  Opens "Close" for terminating the program.
+
+                Creating Books:
+                   Fields with multiple values like: Tags, Authors and Translators
+                   must be separated with ";" for every value.
+
+                Importing Books:
+                  Only .json files are allowed to import.
+
+                Search Button:
+                   Books will be visible when searched.
+
+                Filter by Tags:
+                   Shows available tags for filtering.
+                   Books will be visible when chosen a tag.
+
+                Editing books:
+                    Click on "Edit" button on a book.
+                    Changed info will not be shown on main screen until searched or
+                    Filtered by a tag.
+                    
+                Deleting books:
+                    Click on "Delete" button on a book.
+                    Deleted book will not disappear until searched or
+                    filtered by a tag.
+                    
+                 \s""");
 
         alert.showAndWait();
     }

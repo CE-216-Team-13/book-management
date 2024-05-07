@@ -302,9 +302,5 @@ public class addBookScreen extends Application {
         stage.close();
 
     }
-
-    public static void main(String[] args) {
-        launch();
-    }
-
 }
+
