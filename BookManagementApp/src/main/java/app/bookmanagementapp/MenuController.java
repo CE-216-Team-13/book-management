@@ -15,6 +15,9 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -199,7 +202,7 @@ public class MenuController implements Initializable {
 
         });
 
-
+        displayBooks(Library.getInstance().getBooks(), 4);
         populateFilterByTagsMenu();
 
     }
@@ -290,6 +293,98 @@ public class MenuController implements Initializable {
                 stage.setScene(new Scene(root));
                 stage.show();
             } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        detailsButton.setOnAction(event -> {
+            try {
+                VBox detailsVbox = new VBox();
+                detailsVbox.setAlignment(Pos.TOP_CENTER);
+                Stage detailsStage = new Stage();
+                VBox.setVgrow(detailsVbox, Priority.ALWAYS);
+                detailsVbox.setPadding(new Insets(20, 0, 20, 0));
+                detailsVbox.setMinSize(600, 750);
+                ImageView detailsImage = new ImageView(book.getImage());
+
+                Label titleLabel = new Label("Title: " + book.getTitle());
+                Label subtitleLabel = new Label("Subtitle: " + book.getSubtitle());
+                Label authorsLabel = new Label("Authors: " + book.getAuthors().toString().substring(1, book.getAuthors().toString().length() - 1));
+                Label dateLabel = new Label("Release Date: " + book.getDate());
+                Label editionLabel = new Label("Edition: " + book.getEdition());
+                Label publisherLabel = new Label("Publisher: " + book.getPublisher());
+                Label languageLabel = new Label("Language: " + book.getLanguage());
+                Label ratingLabel = new Label("Rating: " + book.getRating());
+                Label coverLabel = new Label("Cover Type: " + book.getCover());
+                Label translatorsLabel = new Label("Translators: " + book.getTranslators().toString().substring(1, book.getTranslators().toString().length() - 1));
+                Label tagsLabel = new Label("Tags: " + book.getTags().toString().substring(1, book.getTags().toString().length() - 1));
+                Label isbnLabel = new Label("ISBN: " + book.getIsbn());
+
+                Font detailsFont = Font.font("Arial", FontWeight.BOLD, 16);
+                titleLabel.setFont(detailsFont);
+                subtitleLabel.setFont(detailsFont);
+                authorsLabel.setFont(detailsFont);
+                dateLabel.setFont(detailsFont);
+                editionLabel.setFont(detailsFont);
+                publisherLabel.setFont(detailsFont);
+                languageLabel.setFont(detailsFont);
+                ratingLabel.setFont(detailsFont);
+                coverLabel.setFont(detailsFont);
+                translatorsLabel.setFont(detailsFont);
+                tagsLabel.setFont(detailsFont);
+                isbnLabel.setFont(detailsFont);
+
+                Region spacer1 = new Region();
+                Region spacer2 = new Region();
+                Region spacer3 = new Region();
+                Region spacer4 = new Region();
+                Region spacer5 = new Region();
+                Region spacer6 = new Region();
+
+                HBox.setHgrow(spacer1, Priority.ALWAYS);
+                HBox.setHgrow(spacer2, Priority.ALWAYS);
+                HBox.setHgrow(spacer3, Priority.ALWAYS);
+                HBox.setHgrow(spacer4, Priority.ALWAYS);
+                HBox.setHgrow(spacer5, Priority.ALWAYS);
+                HBox.setHgrow(spacer6, Priority.ALWAYS);
+
+                HBox line1 = new HBox(titleLabel, spacer1, subtitleLabel);
+                HBox line2 = new HBox(authorsLabel, spacer2, dateLabel);
+                HBox line3 = new HBox(editionLabel, spacer3, publisherLabel);
+                HBox line4 = new HBox(languageLabel, spacer4, ratingLabel);
+                HBox line5 = new HBox(coverLabel, spacer5, translatorsLabel);
+                HBox line6 = new HBox(tagsLabel, spacer6, isbnLabel);
+
+                line1.setPadding(new Insets(10, 40, 10, 40));
+                line2.setPadding(new Insets(10, 40, 10, 40));
+                line3.setPadding(new Insets(10, 40, 10, 40));
+                line4.setPadding(new Insets(10, 40, 10, 40));
+                line5.setPadding(new Insets(10, 40, 10, 40));
+                line6.setPadding(new Insets(10, 40, 10, 40));
+
+                line1.setAlignment(Pos.CENTER);
+                line2.setAlignment(Pos.CENTER);
+                line3.setAlignment(Pos.CENTER);
+                line4.setAlignment(Pos.CENTER);
+                line5.setAlignment(Pos.CENTER);
+                line6.setAlignment(Pos.CENTER);
+
+                HBox.setHgrow(line1, Priority.ALWAYS);
+                HBox.setHgrow(line2, Priority.ALWAYS);
+                HBox.setHgrow(line3, Priority.ALWAYS);
+                HBox.setHgrow(line4, Priority.ALWAYS);
+                HBox.setHgrow(line5, Priority.ALWAYS);
+                HBox.setHgrow(line6, Priority.ALWAYS);
+
+                detailsImage.setFitHeight(400);
+                detailsImage.setFitWidth(300);
+                detailsImage.setPreserveRatio(true);
+                detailsVbox.getChildren().addAll(detailsImage, line1, line2, line3, line4, line5, line6);
+                detailsStage.setScene(new Scene(detailsVbox));
+                detailsStage.show();
+
+            }
+            catch (Exception e) {
                 e.printStackTrace();
             }
         });

@@ -1,18 +1,22 @@
 {
-    "date": "",
+    "date": "2024-05-10",
     "image": "file:BookManagementApp/images/1714248506990.jpg",
-    "isbn": "",
-    "rating": 0,
-    "edition": "",
-    "language": "",
+    "isbn": "29834298374",
+    "rating": 4.5,
+    "edition": 2,
+    "language": "English",
     "title": "Clean Code",
-    "tags": ["computer science"],
-    "cover": "Hard Cover",
-    "translators": [],
-    "subtitle": "",
-    "publisher": "",
-    "authors": [
-        "Robert C. Martin",
-        "asdasdasdasd"
-    ]
+    "tags": [
+        "Computer Science",
+        "DSA",
+        "Programming"
+    ],
+    "cover": "Paperback",
+    "translators": [
+        "Translator one",
+        "Translator two"
+    ],
+    "subtitle": "This is a subtitle",
+    "publisher": "Amazon Books",
+    "authors": ["Robert C. Martin"]
 }

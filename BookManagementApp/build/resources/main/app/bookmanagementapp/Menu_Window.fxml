@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="vBox" maxHeight="800.0" maxWidth="1070.0" minHeight="800.0" minWidth="1070.0" prefHeight="800.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.bookmanagementapp.MenuController">
+<VBox fx:id="vBox" maxHeight="800.0" maxWidth="1070.0" minHeight="800.0" minWidth="1070.0" prefHeight="800.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.bookmanagementapp.MenuController">
     <children>
         <MenuBar>
             <menus>
@@ -22,7 +22,8 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Manual" />
+                  <MenuItem fx:id="helpmenuıtem" mnemonicParsing="false" onAction="#clicktohelp" text="help" />
+
                     </items>
                 </Menu>
             </menus>
@@ -31,7 +32,6 @@
             <children>
                 <TextField fx:id="searchBar" HBox.hgrow="ALWAYS" />
                 <Button fx:id="searchButton" mnemonicParsing="false" onAction="#onSearchButtonClick" text="Search" HBox.hgrow="ALWAYS" />
-                <Button fx:id="helpButton" mnemonicParsing="false" onAction="#onHelpButtonClick" text="Search" HBox.hgrow="ALWAYS" />
                 <MenuButton fx:id="filterbytags" mnemonicParsing="false" onAction="#clickfilterbytags" text="Filter by Tags" HBox.hgrow="ALWAYS">
                     <items>
                         <!-- CheckMenuItems will be added dynamically in the MenuController class -->
@@ -41,3 +41,4 @@
         </HBox>
     </children>
 </VBox>
+
