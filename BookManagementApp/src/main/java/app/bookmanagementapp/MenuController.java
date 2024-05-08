@@ -81,9 +81,12 @@ public class MenuController implements Initializable {
                    must be separated with ";" for every value.
 
                 Importing Books:
+                  Choose the book that you want to import on FileExplorer.
                   Only .json files are allowed to import.
 
                 Search Button:
+                   Enter the keyword that you want search.
+                   Click on "Search" button.
                    Books will be visible when searched.
 
                 Filter by Tags:
@@ -92,14 +95,16 @@ public class MenuController implements Initializable {
 
                 Editing books:
                     Click on "Edit" button on a book.
-                    Changed info will not be shown on main screen until searched or
-                    Filtered by a tag.
+                    Changed info will not be shown on main screen
+                    until searched or Filtered by a tag.
                     
                 Deleting books:
                     Click on "Delete" button on a book.
                     Deleted book will not disappear until searched or
                     filtered by a tag.
-                    
+                
+                Showing details:
+                    Click on "Details" button on a book to see its details.
                  \s""");
 
         alert.showAndWait();
