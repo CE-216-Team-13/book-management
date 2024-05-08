@@ -1,0 +1,2 @@
+JAVA_VERSION="18.0.2"
+MODULES="java.base java.datatransfer java.xml java.prefs java.desktop javafx.base jdk.unsupported javafx.graphics javafx.controls java.scripting javafx.fxml java.logging org.controlsfx.controls org.json org.kordamp.ikonli.core org.kordamp.ikonli.javafx app.bookmanagementapp app.merged.module"

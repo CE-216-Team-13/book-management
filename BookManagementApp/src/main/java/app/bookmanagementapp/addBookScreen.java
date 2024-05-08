@@ -158,14 +158,15 @@ public class addBookScreen extends Application {
                 if (index == -1) {
                     return;
                 }
+                String userDir = System.getProperty("user.dir");
                 String fileName = System.currentTimeMillis() + file.getName().substring(index);
-                Path destPath = Path.of("BookManagementApp/images", fileName);
+                Path destPath = Paths.get(userDir, "images", fileName);
                 System.out.println("CURSOR WAITS");
                 stage.setOnCloseRequest(event -> event.consume());
                 Task<Void> copyImage = new Task<>() {
                     @Override
                     protected Void call() throws Exception {
-                        imagePath = "file:BookManagementApp/images/" + fileName;
+                        imagePath = "file:" + userDir + "/images/" + fileName;
                         Files.copy(path, destPath, StandardCopyOption.REPLACE_EXISTING);
                         return null;
                     }
@@ -265,11 +266,12 @@ public class addBookScreen extends Application {
         try {
             String filename = generateName();
             book.setLocation(location);
-            File d = new File("BookManagementApp\\books");
+            String userDir = System.getProperty("user.dir");
+            File d = new File(userDir, "books");
             if (!d.exists()) {
                 d.mkdir();
             }
-            Path directory = Paths.get("BookManagementApp\\books", filename);
+            Path directory = Paths.get(d.getAbsolutePath(), filename);
             Files.createFile(directory);
             JSONObject json = new JSONObject();
             json.put("title", book.getTitle());

@@ -44,11 +44,12 @@ public class ImportBookScreen {
                 try {
                     String filename = selectedFile.getName();
                     book.setLocation(a);
-                    File d = new File("BookManagementApp\\books");
+                    String userDir = System.getProperty("user.dir");
+                    File d = new File(userDir, "books");
                     if (!d.exists()) {
                         d.mkdir();
                     }
-                    Path directory = Paths.get("BookManagementApp\\books", filename);
+                    Path directory = Paths.get(d.getAbsolutePath(), filename);
                     try {
                         Files.createFile(directory);
                     } catch (FileAlreadyExistsException e) {

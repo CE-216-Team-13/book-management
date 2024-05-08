@@ -24,7 +24,8 @@ public class Library {
         if (library == null) {
             library = new Library();
         }
-        library.setDirectory(Paths.get("BookManagementApp/books"));
+        String userDir = System.getProperty("user.dir");
+        library.setDirectory(Paths.get(userDir, "books"));
         ArrayList<JSONObject> jsonObjects = new ArrayList<>();
         library.books = new ArrayList<Book>();
         library.tags = new ArrayList<String>();

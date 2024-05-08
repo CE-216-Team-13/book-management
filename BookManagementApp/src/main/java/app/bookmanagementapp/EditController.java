@@ -15,6 +15,7 @@ import java.io.FileWriter;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -218,15 +219,16 @@ public class EditController implements Initializable {
                 if (index == -1) {
                     return;
                 }
+                String userDir = System.getProperty("user.dir");
                 String fileName = System.currentTimeMillis() + file.getName().substring(index);
-                Path destPath = Path.of("BookManagementApp/images", fileName);
+                Path destPath = Paths.get(userDir,"images", fileName);
                 System.out.println("CURSOR WAITS");
                 uploadImageButton.getScene().setCursor(Cursor.WAIT);
                 stage.setOnCloseRequest(event -> event.consume());
                 Task<Void> copyImage = new Task<>() {
                     @Override
                     protected Void call() throws Exception {
-                        imagePath = "file:BookManagementApp/images/" + fileName;
+                        imagePath = "file:" +userDir + "/images/" + fileName;
                         Files.copy(path, destPath, StandardCopyOption.REPLACE_EXISTING);
                         imageChanged = true;
                         return null;
