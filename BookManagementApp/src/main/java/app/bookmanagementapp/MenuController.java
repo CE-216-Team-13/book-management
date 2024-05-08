@@ -307,12 +307,15 @@ public class MenuController implements Initializable {
         detailsButton.setOnAction(event -> {
             try {
                 VBox detailsVbox = new VBox();
-                detailsVbox.setAlignment(Pos.TOP_CENTER);
+                detailsVbox.setAlignment(Pos.CENTER);
                 Stage detailsStage = new Stage();
                 VBox.setVgrow(detailsVbox, Priority.ALWAYS);
                 detailsVbox.setPadding(new Insets(20, 0, 20, 0));
                 detailsVbox.setMinSize(600, 750);
-                ImageView detailsImage = new ImageView(book.getImage());
+                ImageView detailsImage = new ImageView();
+                if (book.getImage() != null) {
+                    detailsImage.setImage(new Image(book.getImage()));
+                }
 
                 Label titleLabel = new Label("Title: " + book.getTitle());
                 Label subtitleLabel = new Label("Subtitle: " + book.getSubtitle());
