@@ -92,7 +92,8 @@ public class MenuController implements Initializable {
                 Filter by Tags:
                    Shows available tags for filtering.
                    Books will be visible when chosen a tag.
-
+                   Newly added tags will be visible when restarted.
+                
                 Editing books:
                     Click on "Edit" button on a book.
                     Changed info will not be shown on main screen
