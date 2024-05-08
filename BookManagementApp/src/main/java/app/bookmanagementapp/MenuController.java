@@ -215,15 +215,13 @@ public class MenuController implements Initializable {
     private void populateFilterByTagsMenu() {
        ArrayList<String> allTags = Library.getInstance().getTags();
         for (String tag : allTags) {
-            String lowerCaseTag = tag.toLowerCase();
-            CheckMenuItem menuItem = new CheckMenuItem(lowerCaseTag);
+
+            CheckMenuItem menuItem = new CheckMenuItem(tag);
             menuItem.setOnAction(event -> {
                 if (menuItem.isSelected()) {
-                    if (!selectedTags.contains(lowerCaseTag)) { // Check if the tag is already in the list
-                        selectedTags.add(lowerCaseTag);
-                    }
+                   selectedTags.add(tag);
                 } else {
-                    selectedTags.remove(lowerCaseTag);
+                    selectedTags.remove(tag);
                 }
                 updateBookDisplay();
             });
