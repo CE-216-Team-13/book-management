@@ -54,7 +54,7 @@ public class Book {
                 ArrayList<String> tags = new ArrayList<>();
                 JSONArray tagsJson = object.getJSONArray("tags");
                 for (Object s : tagsJson) {
-                    tags.add(s.toString());
+                    tags.add(s.toString().toLowerCase());
                     //   System.out.println(s.toString());
                 }
                 this.tags = tags;

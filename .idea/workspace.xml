@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7245de6b-a8f3-4ba0-abd0-4aad1a2cd8b2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/BookManagementApp/src/main/java/app/bookmanagementapp/Library.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

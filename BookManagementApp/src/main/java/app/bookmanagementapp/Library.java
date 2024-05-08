@@ -37,8 +37,8 @@ public class Library {
                 book.setLocation(path.toString());
                 library.books.add(book);
                 for (String tag: book.getTags()) {
-                    if (!library.tags.contains(tag)) {
-                        library.tags.add(tag);
+                    if (!library.tags.contains(tag.toLowerCase())) {
+                        library.tags.add(tag.toLowerCase());
                     }
                 }
             }
